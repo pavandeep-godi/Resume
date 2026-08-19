@@ -480,7 +480,7 @@ with tab_skills:
                 <div>
                     <span class="chip chip-primary">AWS (Athena / S3)</span>
                     <span class="chip">SQL Server</span>
-                    <span class="chip">Snowflake (Hands-on)</span>
+                    <span class="chip">Snowflake (Learning)</span>
                     <span class="chip">Advanced Excel</span>
                 </div>
             </div>
