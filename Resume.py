@@ -19,20 +19,20 @@ st.markdown(
         background-color: #F8FAFC;
     }
     
-    /* Header Typography */
+    /* Header Typography (Enlarged Name & Title) */
     .candidate-name {
-        font-size: 2.4rem;
+        font-size: 3.0rem;
         font-weight: 800;
         color: #0F172A;
-        letter-spacing: -0.5px;
-        margin-bottom: 0px;
+        letter-spacing: -0.8px;
+        margin-bottom: 2px;
         line-height: 1.1;
     }
     .candidate-title {
-        font-size: 1.2rem;
+        font-size: 1.4rem;
         font-weight: 600;
         color: #0284C7;
-        margin-top: 6px;
+        margin-top: 4px;
         margin-bottom: 12px;
     }
     
@@ -128,7 +128,7 @@ with st.sidebar:
 # ---------------------------------------------------------
 # 4. Main Header
 # ---------------------------------------------------------
-col_header, col_contact = st.columns([3, 2])
+col_header, col_contact = st.columns([7, 3])
 
 with col_header:
     st.markdown('<div class="candidate-name">GODI PAVAN DEEP</div>', unsafe_allow_html=True)
@@ -140,7 +140,7 @@ with col_header:
 with col_contact:
     st.markdown(
         """
-    <div style="text-align: right; font-size: 0.95rem; color: #334155; padding-top: 5px;">
+    <div style="text-align: right; font-size: 0.95rem; color: #334155; padding-top: 8px;">
         📧 <b>pavandeep459@gmail.com</b> &nbsp;|&nbsp; 📱 <b>+91 8099490199</b><br>
         💼 <a href="https://www.linkedin.com/in/pavan-deep-godi-3aa8ba16a/" target="_blank" style="color:#0284C7; text-decoration:none;">LinkedIn Profile</a> &nbsp;|&nbsp; 
         💻 <a href="https://github.com/pavandeep-godi" target="_blank" style="color:#0284C7; text-decoration:none;">GitHub Profile</a>
@@ -152,7 +152,7 @@ with col_contact:
 st.markdown("<br>", unsafe_allow_html=True)
 
 # ---------------------------------------------------------
-# 5. Recruiter Quick-Snapshot Cards (Replaced Vanity Metrics)
+# 5. Recruiter Quick-Snapshot Cards
 # ---------------------------------------------------------
 c1, c2, c3, c4 = st.columns(4)
 
@@ -363,13 +363,15 @@ with tab_skills:
             }
         )
 
+        slate_palette = ["#334155", "#0284C7", "#475569", "#0EA5E9", "#64748B"]
+
         fig_skills = px.bar(
             skill_df,
             x="Relative Depth (%)",
             y="Tool",
             color="Domain",
             orientation="h",
-            color_discrete_sequence=px.colors.qualitative.Slate,
+            color_discrete_sequence=slate_palette,
         )
         fig_skills.update_layout(
             height=340,
