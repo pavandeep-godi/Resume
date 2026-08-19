@@ -22,7 +22,7 @@ def get_base64_image(image_path):
 # Try loading your profile picture from your repo; fallback to SVG avatar if not found
 try:
     # Change "profile.jpg" to match your image file name in GitHub
-    img_b64 = get_base64_image("professional_photo.jpg")
+    img_b64 = get_base64_image("professional_photo.JPG")
     img_src = f"data:image/jpeg;base64,{img_b64}"
 except Exception:
     img_src = "https://api.dicebear.com/7.x/initials/svg?seed=GD&backgroundColor=0284c7"
