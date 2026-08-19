@@ -215,7 +215,7 @@ with col_contact:
 st.markdown("<br>", unsafe_allow_html=True)
 
 # ---------------------------------------------------------
-# 4. Recruiter Quick-Snapshot Cards
+# 4. Recruiter Quick-Snapshot Cards (Optimized for First Impression)
 # ---------------------------------------------------------
 c1, c2, c3, c4 = st.columns(4)
 
@@ -223,9 +223,9 @@ with c1:
     st.markdown(
         """
         <div class="snapshot-card">
-            <div class="snapshot-label">Primary Specialization</div>
+            <div class="snapshot-label">Role Focus</div>
             <div class="snapshot-value">Analytics Engineering</div>
-            <div class="snapshot-sub">ETL Pipelines & BI Data Modeling</div>
+            <div class="snapshot-sub">ETL Architecture • Cloud BI • Operations</div>
         </div>
         """,
         unsafe_allow_html=True,
@@ -235,8 +235,8 @@ with c2:
     st.markdown(
         """
         <div class="snapshot-card">
-            <div class="snapshot-label">Career Progression</div>
-            <div class="snapshot-value">7+ Years Track Record</div>
+            <div class="snapshot-label">Enterprise Experience</div>
+            <div class="snapshot-value">7+ Yrs | Enterprise Impact</div>
             <div class="snapshot-sub">Deloitte • Solenis • TCS</div>
         </div>
         """,
@@ -249,7 +249,7 @@ with c3:
         <div class="snapshot-card">
             <div class="snapshot-label">Core Tech Stack</div>
             <div class="snapshot-value">SQL • Python • KNIME</div>
-            <div class="snapshot-sub">Tableau • AWS (Athena/Glue)</div>
+            <div class="snapshot-sub">AWS (Glue/Athena) • Tableau</div>
         </div>
         """,
         unsafe_allow_html=True,
@@ -259,9 +259,9 @@ with c4:
     st.markdown(
         """
         <div class="snapshot-card">
-            <div class="snapshot-label">Domain Focus</div>
-            <div class="snapshot-value">Sales & Finance Analytics</div>
-            <div class="snapshot-sub">Workflow Migration & Automation</div>
+            <div class="snapshot-label">Business Domain</div>
+            <div class="snapshot-value">Sales & Finance Ops</div>
+            <div class="snapshot-sub">Migration • Pipeline Automation</div>
         </div>
         """,
         unsafe_allow_html=True,
