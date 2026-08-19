@@ -1,4 +1,5 @@
 import base64
+import os
 import pandas as pd
 import streamlit as st
 
@@ -12,45 +13,49 @@ st.set_page_config(
     initial_sidebar_state="collapsed",
 )
 
+# ---------------------------------------------------------
+# Profile Image Loader
+# ---------------------------------------------------------
+IMAGE_FILENAME = "professional_photo.JPG"
 
-# Helper function to read a local image file and convert to Base64
+
 def get_base64_image(image_path):
+    if not os.path.exists(image_path):
+        return None
+
+    ext = os.path.splitext(image_path)[1].lower()
+    mime_type = "image/png" if ext == ".png" else "image/jpeg"
+
     with open(image_path, "rb") as file:
-        return base64.b64encode(file.read()).decode("utf-8")
+        encoded = base64.b64encode(file.read()).decode("utf-8")
+        return f"data:{mime_type};base64,{encoded}"
 
 
-# Try loading your profile picture from your repo; fallback to SVG avatar if not found
-try:
-    # Change "profile.jpg" to match your image file name in GitHub
-    img_b64 = get_base64_image("professional_photo.JPG")
-    img_src = f"data:image/jpeg;base64,{img_b64}"
-except Exception:
+img_src = get_base64_image(IMAGE_FILENAME)
+
+if not img_src:
     img_src = "https://api.dicebear.com/7.x/initials/svg?seed=GD&backgroundColor=0284c7"
 
 # ---------------------------------------------------------
-# 2. Fully Responsive Mobile-First CSS Theme
+# 2. Fully Responsive CSS Theme
 # ---------------------------------------------------------
 st.markdown(
     """
     <style>
-    /* Force Light Color Scheme */
     :root {
         color-scheme: light !important;
     }
 
-    /* Global Canvas Styling */
     .stApp {
         background-color: #F8FAFC !important;
         color: #0F172A !important;
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     }
 
-    /* Hide Sidebar Elements */
     [data-testid="stSidebar"], [data-testid="collapsedControl"] {
         display: none !important;
     }
 
-    /* Hero Header Card */
     .hero-card {
         background: linear-gradient(135deg, #FFFFFF 0%, #F1F5F9 100%);
         border: 1px solid #E2E8F0;
@@ -75,15 +80,17 @@ st.markdown(
         flex-wrap: wrap;
     }
 
+    /* Square Profile Image Styling (Fits Perfectly) */
     .header-avatar {
-        border-radius: 50%;
-        border: 3px solid #0284C7;
-        padding: 2px;
+        border-radius: 12px !important; /* Soft square corners */
+        border: 2px solid #0284C7 !important;
+        padding: 0px !important; /* Removed internal padding to fill box */
         background-color: #FFFFFF;
         box-shadow: 0 4px 8px rgba(2, 132, 199, 0.15);
-        width: clamp(70px, 15vw, 95px);
-        height: clamp(70px, 15vw, 95px);
-        object-fit: cover;
+        width: 90px !important;
+        height: 90px !important;
+        object-fit: cover !important; /* Fills box completely with no gaps */
+        display: block;
     }
 
     .candidate-name {
@@ -113,7 +120,6 @@ st.markdown(
         margin-top: 6px;
     }
 
-    /* Mobile Responsive Contact Bar */
     .contact-bar {
         display: flex;
         flex-wrap: wrap;
@@ -137,7 +143,6 @@ st.markdown(
         text-decoration: underline;
     }
 
-    /* Value Proposition Banner */
     .val-card {
         background: #FFFFFF;
         border: 1px solid #E2E8F0;
@@ -165,7 +170,6 @@ st.markdown(
         display: inline-block;
     }
 
-    /* Responsive CSS Grid for Metric Cards (Auto Stacks on Mobile) */
     .metrics-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -210,7 +214,6 @@ st.markdown(
         line-height: 1.3;
     }
 
-    /* Responsive Skills Grid */
     .skills-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -257,7 +260,6 @@ st.markdown(
         border-color: #BAE6FD;
     }
 
-    /* Experience Header Styling (Mobile Responsive) */
     .exp-header {
         display: flex;
         flex-wrap: wrap;
@@ -277,7 +279,6 @@ st.markdown(
         color: #0284C7;
     }
 
-    /* Tab Layout Tweaks */
     button[data-baseweb="tab"] {
         background-color: transparent !important;
         color: #64748B !important;
@@ -291,14 +292,12 @@ st.markdown(
         border-bottom-width: 3px !important;
     }
 
-    /* Mobile Table Scroll Container */
     .table-container {
         width: 100%;
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
     }
 
-    /* Media Query Adjustments for Small Screens */
     @media (max-width: 640px) {
         .hero-wrapper {
             flex-direction: column;
@@ -367,7 +366,7 @@ st.markdown(
 )
 
 # ---------------------------------------------------------
-# 5. Responsive Hero Impact Highlights (Auto-Stack Grid)
+# 5. Responsive Hero Impact Highlights
 # ---------------------------------------------------------
 st.markdown(
     "<div style='font-size: 1.05rem; font-weight: 800; color: #0F172A; margin-bottom: 10px;'>📈 High-Impact Engineering Achievements</div>",
@@ -415,7 +414,6 @@ tab_exp, tab_skills, tab_matrix = st.tabs(
 
 # TAB 1: EXPERIENCE
 with tab_exp:
-    # Deloitte
     with st.container(border=True):
         st.markdown(
             """
@@ -437,7 +435,6 @@ with tab_exp:
         """
         )
 
-    # Solenis
     with st.container(border=True):
         st.markdown(
             """
@@ -457,7 +454,6 @@ with tab_exp:
         """
         )
 
-    # TCS
     with st.container(border=True):
         st.markdown(
             """
@@ -476,7 +472,7 @@ with tab_exp:
         """
         )
 
-# TAB 2: SKILLS ECOSYSTEM (Responsive CSS Grid)
+# TAB 2: SKILLS ECOSYSTEM
 with tab_skills:
     st.markdown(
         """
