@@ -79,8 +79,8 @@ with st.sidebar:
 
     st.markdown("---")
     st.markdown("### 📞 Contact Details")
-    st.markdown("📧 **Email:** [your.email@example.com](mailto:your.email@example.com)")
-    st.markdown("📱 **Phone:** +91 98765 43210")
+    st.markdown("📧 **Email:** [pavandeep459@gmail.com](mailto:pavandeep459@gmail.com)")
+    st.markdown("📱 **Phone:** +91 8099490199")
     st.markdown("💼 **LinkedIn:** [linkedin.com/in/yourprofile](https://linkedin.com)")
     st.markdown("💻 **GitHub:** [github.com/yourprofile](https://github.com)")
 
@@ -102,7 +102,7 @@ with st.sidebar:
 col_header, col_contact = st.columns([3, 2])
 
 with col_header:
-    st.markdown('<p class="main-title">YOUR NAME</p>', unsafe_allow_html=True)
+    st.markdown('<p class="main-title">GODI PAVAN DEEP</p>', unsafe_allow_html=True)
     st.markdown(
         '<p class="sub-title">Analytics & Insights Engineer (7+ Years)</p>',
         unsafe_allow_html=True,
