@@ -9,70 +9,80 @@ st.set_page_config(
     initial_sidebar_state="collapsed",
 )
 
-# 2. Modern Clean & Professional CSS
+# 2. Modern Executive CSS Theme
 st.markdown(
     """
     <style>
-    /* Force Light Color Scheme for Consistent Contrast */
+    /* Force Light Color Scheme */
     :root {
         color-scheme: light !important;
     }
 
-    /* Main App Canvas */
+    /* Global Canvas Styling */
     .stApp {
         background-color: #F8FAFC !important;
         color: #0F172A !important;
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     }
 
-    /* Completely Hide Sidebar */
-    [data-testid="stSidebar"] {
-        display: none !important;
-    }
-    [data-testid="collapsedControl"] {
+    /* Hide Sidebar Elements */
+    [data-testid="stSidebar"], [data-testid="collapsedControl"] {
         display: none !important;
     }
 
-    /* Main Page Profile Image */
+    /* Hero Header Card */
+    .hero-card {
+        background: linear-gradient(135deg, #FFFFFF 0%, #F1F5F9 100%);
+        border: 1px solid #E2E8F0;
+        border-radius: 16px;
+        padding: 24px;
+        box-shadow: 0 4px 12px rgba(15, 23, 42, 0.03);
+        margin-bottom: 20px;
+    }
+
     .header-avatar {
         border-radius: 50%;
         border: 3px solid #0284C7;
         padding: 3px;
         background-color: #FFFFFF;
-        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 4px 8px rgba(2, 132, 199, 0.15);
     }
 
-    /* Main Header Typography */
     .candidate-name {
-        font-size: 2.6rem;
+        font-size: 2.4rem;
         font-weight: 800;
         color: #0F172A !important;
         letter-spacing: -0.8px;
         line-height: 1.1;
     }
+
     .candidate-title {
-        font-size: 1.25rem;
-        font-weight: 600;
+        font-size: 1.2rem;
+        font-weight: 700;
         color: #0284C7 !important;
         margin-top: 4px;
-        margin-bottom: 4px;
-    }
-    .candidate-location {
-        font-size: 0.9rem;
-        color: #64748B !important;
-        font-weight: 500;
     }
 
-    /* Single-Line Contact Details Bar */
+    .status-badge {
+        display: inline-block;
+        background-color: #F0FDF4;
+        color: #166534;
+        border: 1px solid #BBF7D0;
+        font-size: 0.78rem;
+        font-weight: 700;
+        padding: 3px 10px;
+        border-radius: 20px;
+        margin-top: 6px;
+    }
+
     .contact-bar {
         display: flex;
+        flex-wrap: wrap;
         justify-content: flex-end;
         align-items: center;
         gap: 12px;
-        font-size: 0.9rem;
-        color: #334155 !important;
-        padding-top: 10px;
-        white-space: nowrap;
+        font-size: 0.88rem;
+        color: #475569 !important;
     }
     .contact-bar a {
         color: #0284C7 !important;
@@ -83,91 +93,125 @@ st.markdown(
         text-decoration: underline;
     }
 
-    /* Recruiter Quick-Snapshot Cards */
-    .snapshot-card {
-        background-color: #FFFFFF !important;
-        border: 1px solid #E2E8F0 !important;
-        border-radius: 10px;
+    /* Hero Metric Highlights */
+    .metric-card {
+        background: #FFFFFF;
+        border: 1px solid #E2E8F0;
+        border-left: 4px solid #0284C7;
+        border-radius: 12px;
         padding: 16px;
-        box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
-        height: 100%;
-        transition: transform 0.15s ease-in-out;
+        box-shadow: 0 2px 4px rgba(15, 23, 42, 0.04);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
-    .snapshot-label {
-        font-size: 0.72rem;
+    .metric-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 12px rgba(15, 23, 42, 0.08);
+    }
+    .metric-card.accent-emerald { border-left-color: #10B981; }
+    .metric-card.accent-indigo { border-left-color: #6366F1; }
+    .metric-card.accent-amber { border-left-color: #F59E0B; }
+
+    .metric-val {
+        font-size: 2rem;
+        font-weight: 800;
+        color: #0F172A;
+        line-height: 1;
+    }
+    .metric-lbl {
+        font-size: 0.82rem;
         font-weight: 700;
+        color: #64748B;
         text-transform: uppercase;
-        color: #64748B !important;
-        letter-spacing: 0.6px;
-        margin-bottom: 6px;
+        letter-spacing: 0.5px;
+        margin-top: 6px;
     }
-    .snapshot-value {
-        font-size: 1.0rem;
-        font-weight: 700;
-        color: #0F172A !important;
-        line-height: 1.3;
-    }
-    .snapshot-sub {
-        font-size: 0.8rem;
-        color: #475569 !important;
+    .metric-sub {
+        font-size: 0.78rem;
+        color: #475569;
         margin-top: 4px;
     }
 
-    /* Custom Streamlit Container Elevation */
-    div[data-testid="stVerticalBlockBorderWrapper"] {
-        background-color: #FFFFFF !important;
-        border: 1px solid #E2E8F0 !important;
-        border-radius: 10px !important;
-        box-shadow: 0 1px 3px rgba(15, 23, 42, 0.03) !important;
+    /* Value Proposition Banner */
+    .val-card {
+        background: #FFFFFF;
+        border: 1px solid #E2E8F0;
+        border-radius: 12px;
+        padding: 20px;
+        box-shadow: 0 2px 4px rgba(15, 23, 42, 0.02);
+        margin-bottom: 24px;
     }
-    div[data-testid="stVerticalBlockBorderWrapper"] * {
-        color: #0F172A !important;
-    }
-
-    /* Custom Skill Badges */
-    .skill-badge {
-        background-color: #F1F5F9 !important;
-        color: #0F172A !important;
-        border: 1px solid #CBD5E1 !important;
-        padding: 6px 14px;
+    .pillar-pill {
+        background-color: #EFF6FF;
+        color: #1E40AF;
+        border: 1px solid #BFDBFE;
+        font-size: 0.82rem;
+        font-weight: 700;
+        padding: 4px 12px;
         border-radius: 6px;
-        font-size: 0.88rem;
-        font-weight: 600;
         display: inline-block;
-        margin: 4px 3px;
+        margin-right: 8px;
+        margin-bottom: 8px;
     }
 
-    /* Tab Styling */
+    /* Skills Grid UI */
+    .skill-card {
+        background: #FFFFFF;
+        border: 1px solid #E2E8F0;
+        border-radius: 12px;
+        padding: 16px;
+        height: 100%;
+        box-shadow: 0 1px 3px rgba(15, 23, 42, 0.02);
+    }
+    .skill-title {
+        font-size: 0.95rem;
+        font-weight: 700;
+        color: #0F172A;
+        margin-bottom: 12px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    .chip {
+        display: inline-block;
+        background-color: #F1F5F9;
+        color: #334155;
+        border: 1px solid #CBD5E1;
+        padding: 5px 11px;
+        border-radius: 20px;
+        font-size: 0.82rem;
+        font-weight: 600;
+        margin: 3px;
+    }
+    .chip-primary {
+        background-color: #E0F2FE;
+        color: #0369A1;
+        border-color: #BAE6FD;
+    }
+
+    /* Tab Layout Tweaks */
     button[data-baseweb="tab"] {
         background-color: transparent !important;
         color: #64748B !important;
-        font-weight: 600 !important;
-        font-size: 0.95rem !important;
-        padding: 10px 16px !important;
+        font-weight: 700 !important;
+        font-size: 1rem !important;
+        padding: 12px 20px !important;
     }
     button[data-baseweb="tab"][aria-selected="true"] {
         color: #0284C7 !important;
         border-bottom-color: #0284C7 !important;
-        border-bottom-width: 2px !important;
+        border-bottom-width: 3px !important;
     }
 
-    /* Table Styling Override */
-    div[data-testid="stDataFrame"] {
-        background-color: #FFFFFF !important;
-        border-radius: 8px !important;
-        border: 1px solid #E2E8F0 !important;
+    /* Experience Header Styling */
+    .exp-company {
+        font-size: 1.2rem;
+        font-weight: 800;
+        color: #0F172A;
     }
-
-    /* Experience Headers */
-    .company-title {
-        font-size: 1.15rem;
+    .exp-date {
+        font-size: 0.88rem;
         font-weight: 700;
-        color: #0F172A !important;
-    }
-    .role-dates {
-        font-size: 0.9rem;
-        font-weight: 600;
-        color: #0284C7 !important;
+        color: #0284C7;
         text-align: right;
     }
     </style>
@@ -176,289 +220,320 @@ st.markdown(
 )
 
 # ---------------------------------------------------------
-# 3. Main Header (With Profile Picture Integrated)
+# 3. Header Hero Section
 # ---------------------------------------------------------
-col_img, col_header, col_contact = st.columns([1.2, 5.8, 3])
-
-with col_img:
-    st.markdown(
-        """
-        <img class="header-avatar" src="https://api.dicebear.com/7.x/initials/svg?seed=GD&backgroundColor=0284c7" width="105">
-        """,
-        unsafe_allow_html=True,
-    )
-
-with col_header:
-    st.markdown('<div class="candidate-name">GODI PAVAN DEEP</div>', unsafe_allow_html=True)
-    st.markdown(
-        '<div class="candidate-title">Analytics & Insights Engineer (7+ Years Experience)</div>',
-        unsafe_allow_html=True,
-    )
-    st.markdown('<div class="candidate-location">📍 Hyderabad, India</div>', unsafe_allow_html=True)
-
-with col_contact:
-    st.markdown(
-        """
-    <div class="contact-bar">
-        <span>📧 <b>pavandeep459@gmail.com</b></span>
-        <span>|</span>
-        <span>📱 <b>+91 8099490199</b></span>
-        <span>|</span>
-        <a href="https://www.linkedin.com/in/pavan-deep-godi-3aa8ba16a/" target="_blank">LinkedIn</a>
-        <span>|</span>
-        <a href="https://github.com/pavandeep-godi" target="_blank">GitHub</a>
+st.markdown(
+    """
+    <div class="hero-card">
+        <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px;">
+            <div style="display: flex; align-items: center; gap: 20px; flex-wrap: wrap;">
+                <img class="header-avatar" src="https://api.dicebear.com/7.x/initials/svg?seed=GD&backgroundColor=0284c7" width="95">
+                <div>
+                    <div class="candidate-name">GODI PAVAN DEEP</div>
+                    <div class="candidate-title">Analytics & Insights Engineer</div>
+                    <div class="status-badge">🟢 7+ Years Experience &nbsp;•&nbsp; Open to Senior Analytics Roles</div>
+                </div>
+            </div>
+            <div class="contact-bar">
+                <span>📍 Hyderabad, India</span><span>•</span>
+                <span>📧 <a href="mailto:pavandeep459@gmail.com">pavandeep459@gmail.com</a></span><span>•</span>
+                <span>📱 +91 8099490199</span><br>
+                <span>🔗 <a href="https://www.linkedin.com/in/pavan-deep-godi-3aa8ba16a/" target="_blank">LinkedIn Profile</a></span><span>•</span>
+                <span>💻 <a href="https://github.com/pavandeep-godi" target="_blank">GitHub Repository</a></span>
+            </div>
+        </div>
     </div>
-    """,
-        unsafe_allow_html=True,
-    )
-
-st.markdown("<br>", unsafe_allow_html=True)
-
-# ---------------------------------------------------------
-# 4. Recruiter Quick-Snapshot Cards (Optimized for First Impression)
-# ---------------------------------------------------------
-c1, c2, c3, c4 = st.columns(4)
-
-with c1:
-    st.markdown(
-        """
-        <div class="snapshot-card">
-            <div class="snapshot-label">Role Focus</div>
-            <div class="snapshot-value">Analytics Engineering</div>
-            <div class="snapshot-sub">ETL Architecture • Cloud BI • Operations</div>
-        </div>
-        """,
-        unsafe_allow_html=True,
-    )
-
-with c2:
-    st.markdown(
-        """
-        <div class="snapshot-card">
-            <div class="snapshot-label">Enterprise Experience</div>
-            <div class="snapshot-value">7+ Yrs | Enterprise Impact</div>
-            <div class="snapshot-sub">Deloitte • Solenis • TCS</div>
-        </div>
-        """,
-        unsafe_allow_html=True,
-    )
-
-with c3:
-    st.markdown(
-        """
-        <div class="snapshot-card">
-            <div class="snapshot-label">Core Tech Stack</div>
-            <div class="snapshot-value">SQL • Python • KNIME</div>
-            <div class="snapshot-sub">AWS (Glue/Athena) • Tableau</div>
-        </div>
-        """,
-        unsafe_allow_html=True,
-    )
-
-with c4:
-    st.markdown(
-        """
-        <div class="snapshot-card">
-            <div class="snapshot-label">Business Domain</div>
-            <div class="snapshot-value">Sales & Finance Ops</div>
-            <div class="snapshot-sub">Migration • Pipeline Automation</div>
-        </div>
-        """,
-        unsafe_allow_html=True,
-    )
-
-st.markdown("<br>", unsafe_allow_html=True)
-
-# Executive Summary Container
-with st.container(border=True):
-    st.markdown("#### **📌 Executive Summary**")
-    st.write(
-        """
-        **Analytics & Insights Engineer (7+ years)** focused on turning complex raw data into reliable business intelligence. 
-        Specialized in building and scaling **SQL/Python + KNIME-based ETL pipelines**, enforcing rigorous data quality standards, 
-        and deploying **Tableau dashboards & KPI models** for executive leadership across sales and finance operations. 
-        Proven track record of migrating legacy/manual reporting into fully automated cloud-supported workflows.
-        """
-    )
-
-st.markdown("<br>", unsafe_allow_html=True)
-
-# ---------------------------------------------------------
-# 5. Structured Tabs Layout
-# ---------------------------------------------------------
-tab_exp, tab_skills, tab_impact = st.tabs(
-    ["💼 Professional Experience", "🛠️ Technical Skills & Tools", "📊 Impact Highlights"]
+""",
+    unsafe_allow_html=True,
 )
 
 # ---------------------------------------------------------
-# TAB 1: WORK EXPERIENCE
+# 4. Executive Value Proposition & Core Pillars
 # ---------------------------------------------------------
+st.markdown(
+    """
+    <div class="val-card">
+        <div style="font-size: 1.05rem; font-weight: 800; color: #0F172A; margin-bottom: 8px;">
+            🎯 Executive Profile & Value Proposition
+        </div>
+        <div style="font-size: 0.95rem; color: #334155; line-height: 1.6; margin-bottom: 14px;">
+            <b>Analytics & Insights Engineer</b> with 7+ years of experience transforming complex multi-source enterprise data into reliable, automated analytics architectures. Specialized in engineering high-throughput <b>SQL/Python + KNIME pipelines</b>, modernizing legacy reporting workflows, and architecting executive-level <b>Tableau & BI dashboards</b> across global sales and financial operations.
+        </div>
+        <div>
+            <span class="pillar-pill">⚡ Automated ETL & Data Pipelines</span>
+            <span class="pillar-pill">📊 Enterprise BI & Dashboarding</span>
+            <span class="pillar-pill">🎯 Process Optimization & Migration</span>
+            <span class="pillar-pill">☁️ AWS & Cloud Analytics</span>
+            <span class="pillar-pill">💼 Sales & Finance Operations</span>
+        </div>
+    </div>
+""",
+    unsafe_allow_html=True,
+)
+
+# ---------------------------------------------------------
+# 5. Hero Impact Highlights (High-Impact Stat Cards)
+# ---------------------------------------------------------
+st.markdown(
+    "<div style='font-size: 1.1rem; font-weight: 800; color: #0F172A; margin-bottom: 12px;'>📈 High-Impact Engineering Achievements</div>",
+    unsafe_allow_html=True,
+)
+
+m1, m2, m3, m4 = st.columns(4)
+
+with m1:
+    st.markdown(
+        """
+        <div class="metric-card">
+            <div class="metric-val" style="color: #0284C7;">60%</div>
+            <div class="metric-lbl">Manual Request Reduction</div>
+            <div class="metric-sub">Built self-serve Tableau BI for Deloitte Cash Plus Pilot (30+ client users)</div>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+with m2:
+    st.markdown(
+        """
+        <div class="metric-card accent-emerald">
+            <div class="metric-val" style="color: #10B981;">$450K+</div>
+            <div class="metric-lbl">Cost Savings Discovered</div>
+            <div class="metric-sub">Surfaced targeted operational savings via spend driver analytics at Solenis</div>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+with m3:
+    st.markdown(
+        """
+        <div class="metric-card accent-indigo">
+            <div class="metric-val" style="color: #6366F1;">15+</div>
+            <div class="metric-lbl">ETL Workflows Migrated</div>
+            <div class="metric-sub">Migrated complex Alteryx legacy models to standardized KNIME nodes</div>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+with m4:
+    st.markdown(
+        """
+        <div class="metric-card accent-amber">
+            <div class="metric-val" style="color: #D97706;">90 Min</div>
+            <div class="metric-lbl">Saved Per Month</div>
+            <div class="metric-sub">Automated recurring chart generation from complex Excel templates</div>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+st.markdown("<br>", unsafe_allow_html=True)
+
+# ---------------------------------------------------------
+# 6. Main Content Tabs
+# ---------------------------------------------------------
+tab_exp, tab_skills, tab_matrix = st.tabs(
+    [
+        "💼 Career Experience",
+        "🛠️ Technical Ecosystem & Tools",
+        "📊 Quantified Impact Matrix",
+    ]
+)
+
+# TAB 1: EXPERIENCE
 with tab_exp:
-    # Role 1: Deloitte
+    # Deloitte
     with st.container(border=True):
         c1, c2 = st.columns([3, 1])
         with c1:
             st.markdown(
-                '<div class="company-title">Analytics & Insights Engineer &nbsp;|&nbsp; Deloitte</div>',
+                '<div class="exp-company">Analytics & Insights Engineer &nbsp;|&nbsp; Deloitte</div>',
                 unsafe_allow_html=True,
             )
         with c2:
             st.markdown(
-                '<div class="role-dates">June 2024 – Present</div>',
+                '<div class="exp-date">June 2024 – Present</div>',
                 unsafe_allow_html=True,
             )
 
         st.markdown(
             """
-        * **ETL Migration & Optimization:** Converted **15+ Alteryx workflows into KNIME-based ETL**, consolidating repeated transformations into reusable nodes to support cost optimization and consistent dataset outputs.
-        * **Pipeline Automation:** Built and automated **20+ ingestion pipelines** with standardized input formats and transformation steps, cutting pipeline runtime and making releases repeatable across parallel projects.
-        * **Large-Scale Data Migrations:** Executed enterprise migrations across testing and production cycles using **IBM DataStage** and **SAP LSMW**, resolving quality anomalies for two distinct projects.
-        * **Self-Serve Dashboarding:** Delivered an interactive **Tableau self-serve dashboard for Cash Plus Pilot** (30+ client users), backed by automated datasets; reduced manual reporting requests by **60%** within the pilot period.
+        * **ETL Migration & Cost Optimization:** Converted **15+ Alteryx workflows into KNIME-based ETL**, consolidating repeated transformations into reusable nodes to drive cost optimization and consistent dataset outputs.
+        * **Pipeline Automation:** Engineered and automated **20+ ingestion pipelines** with standardized input formats and transformation steps, cutting pipeline runtime and making releases repeatable across parallel projects.
+        * **Large-Scale Enterprise Migrations:** Executed enterprise migrations across testing and production cycles using **IBM DataStage** and **SAP LSMW**, resolving data quality anomalies.
+        * **Self-Serve Dashboarding:** Delivered an interactive **Tableau self-serve dashboard for Cash Plus Pilot** (30+ client users), backed by automated datasets; reduced manual reporting requests by **60%**.
         * **Executive KPI Redesign:** Rebuilt the Sales Executive KPI dashboard with clearer metric definitions and consistent filters, reducing ad-hoc query volume by **40%**.
-        * **Process Automation:** Automated the generation of Tableau-ready charts from recurring Excel templates, saving **~90 minutes/month** of manual rebuild work.
-        * **End-to-End Quality Ownership:** Owned end-to-end delivery from dataset design → pipeline automation → validation → dashboard deployment. Triaged and fixed **12+ dashboard/data defects per release cycle**, ensuring post-migration data accuracy.
+        * **Process Automation:** Automated Tableau-ready chart generation from recurring Excel templates, saving **~90 minutes/month** of manual rebuild work.
         """
         )
 
-    # Role 2: Solenis
+    # Solenis
     with st.container(border=True):
         c1, c2 = st.columns([3, 1])
         with c1:
             st.markdown(
-                '<div class="company-title">Senior Data Analyst 2 &nbsp;|&nbsp; Solenis</div>',
+                '<div class="exp-company">Senior Data Analyst 2 &nbsp;|&nbsp; Solenis</div>',
                 unsafe_allow_html=True,
             )
         with c2:
             st.markdown(
-                '<div class="role-dates">November 2021 – May 2024</div>',
+                '<div class="exp-date">November 2021 – May 2024</div>',
                 unsafe_allow_html=True,
             )
 
         st.markdown(
             """
-        * **Working Capital Analytics:** Built a working capital cash-flow dashboard and refined KPI definitions based on stakeholder feedback, increasing adoption/usage by **30%**.
-        * **Executive Reviews:** Developed an executive KPI dashboard for weekly performance reviews, improving visibility into core operational metrics and trends.
-        * **Leadership Reporting:** Produced monthly executive performance decks using standardized SQL extracts, translating operational data trends into actions and targets for leadership.
-        * **Cost Reduction Discovery:** Co-developed an interactive analytics view that surfaced **$450K+ cost reduction opportunities** by segmenting spend/performance drivers and enabling targeted operational actions.
-        * **Ad-Hoc Logic Reusability:** Partnered with business owners for ad-hoc analytics requests, converting one-off questions into reusable datasets/KPI logic to reduce repeat work.
-        * **Stakeholder Training:** Trained stakeholders on dashboard usage and metric definitions, improving engagement by **5–10%** post-session.
+        * **Working Capital Analytics:** Built a working capital cash-flow dashboard and refined KPI definitions based on stakeholder feedback, increasing adoption by **30%**.
+        * **Executive Reviews:** Developed an executive KPI dashboard for weekly performance reviews, improving visibility into core operational trends.
+        * **Cost Reduction Discovery:** Co-developed an interactive analytics view surfacing **$450K+ cost reduction opportunities** by segmenting spend/performance drivers.
+        * **Leadership Reporting:** Produced monthly executive performance decks using standardized SQL extracts, translating operational data trends into strategic targets.
         """
         )
 
-    # Role 3: TCS
+    # TCS
     with st.container(border=True):
         c1, c2 = st.columns([3, 1])
         with c1:
             st.markdown(
-                '<div class="company-title">Data Analyst &nbsp;|&nbsp; TCS</div>',
+                '<div class="exp-company">Data Analyst &nbsp;|&nbsp; TCS</div>',
                 unsafe_allow_html=True,
             )
         with c2:
             st.markdown(
-                '<div class="role-dates">April 2019 – November 2021</div>',
+                '<div class="exp-date">April 2019 – November 2021</div>',
                 unsafe_allow_html=True,
             )
 
         st.markdown(
             """
-        * **Cloud Data Processing:** Built a **PySpark ETL proof of concept on AWS** to separate and analyze historical vs current datasets, enabling faster analysis-ready extracts for the team.
-        * **Operations Dashboards:** Developed Tableau-KPI dashboards for operations leadership, surfacing key trends weekly.
-        * **Python Automation:** Replaced repetitive Excel workflows with Python automation, reducing manual effort and errors by **~60%** for recurring reporting tasks.
+        * **Cloud Data Processing:** Built a **PySpark ETL proof of concept on AWS** to separate and analyze historical vs current datasets for faster analysis-ready extracts.
+        * **Operations Dashboards:** Developed Tableau KPI dashboards for operations leadership, surfacing key trends weekly.
+        * **Python Automation:** Replaced repetitive Excel workflows with Python automation, reducing manual effort and errors by **~60%**.
         """
         )
 
-# ---------------------------------------------------------
-# TAB 2: SKILLS & TOOLS
-# ---------------------------------------------------------
+# TAB 2: SKILLS ECOSYSTEM
 with tab_skills:
-    with st.container(border=True):
-        st.markdown("#### **Technical Skill Matrix & Toolset**")
+    st.markdown(
+        "<div style='font-size: 1rem; font-weight: 700; color: #0F172A; margin-bottom: 12px;'>🛠️ Structured Skill Architecture</div>",
+        unsafe_allow_html=True,
+    )
+
+    sk1, sk2 = st.columns(2)
+
+    with sk1:
+        st.markdown(
+            """
+            <div class="skill-card">
+                <div class="skill-title">⚙️ Analytics Engineering & Pipelines</div>
+                <div>
+                    <span class="chip chip-primary">KNIME (Advanced)</span>
+                    <span class="chip chip-primary">AWS Glue</span>
+                    <span class="chip">IBM DataStage</span>
+                    <span class="chip">Alteryx</span>
+                    <span class="chip">SAP LSMW</span>
+                    <span class="chip">dbt (Learning)</span>
+                </div>
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
         st.markdown("<br>", unsafe_allow_html=True)
 
-        skills_dict = {
-            "BI & Visualization": ["Tableau", "Power BI", "Tableau Prep"],
-            "Analytics Engineering & Migration": [
-                "KNIME",
-                "AWS Glue",
-                "IBM DataStage",
-                "Alteryx",
-                "SAP LSMW",
-            ],
-            "Programming & Querying": ["Python", "SQL", "PySpark (POC)"],
-            "Data Prep & Analytics": ["Tableau Prep", "Advanced Excel"],
-            "Data Platforms": ["AWS (Athena)", "SQL Server"],
-            "Continuous Learning / Projects": ["dbt", "Snowflake"],
-        }
+        st.markdown(
+            """
+            <div class="skill-card">
+                <div class="skill-title">💻 Programming & Querying</div>
+                <div>
+                    <span class="chip chip-primary">SQL (Complex Joins/CTEs)</span>
+                    <span class="chip chip-primary">Python (Pandas/Automation)</span>
+                    <span class="chip">PySpark (POC)</span>
+                </div>
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
 
-        col1, col2 = st.columns(2)
-        items_list = list(skills_dict.items())
+    with sk2:
+        st.markdown(
+            """
+            <div class="skill-card">
+                <div class="skill-title">📊 BI & Data Visualization</div>
+                <div>
+                    <span class="chip chip-primary">Tableau Desktop & Server</span>
+                    <span class="chip chip-primary">Power BI</span>
+                    <span class="chip">Tableau Prep</span>
+                    <span class="chip">Executive Dashboards</span>
+                </div>
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
+        st.markdown("<br>", unsafe_allow_html=True)
 
-        with col1:
-            for category, items in items_list[:3]:
-                st.markdown(f"**{category}**")
-                badge_html = "".join(
-                    [f'<span class="skill-badge">{item}</span>' for item in items]
-                )
-                st.markdown(badge_html, unsafe_allow_html=True)
-                st.markdown("<div style='margin-bottom: 16px;'></div>", unsafe_allow_html=True)
+        st.markdown(
+            """
+            <div class="skill-card">
+                <div class="skill-title">☁️ Data Platforms & Warehousing</div>
+                <div>
+                    <span class="chip chip-primary">AWS (Athena / S3)</span>
+                    <span class="chip">SQL Server</span>
+                    <span class="chip">Snowflake (Hands-on)</span>
+                    <span class="chip">Advanced Excel</span>
+                </div>
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
 
-        with col2:
-            for category, items in items_list[3:]:
-                st.markdown(f"**{category}**")
-                badge_html = "".join(
-                    [f'<span class="skill-badge">{item}</span>' for item in items]
-                )
-                st.markdown(badge_html, unsafe_allow_html=True)
-                st.markdown("<div style='margin-bottom: 16px;'></div>", unsafe_allow_html=True)
+# TAB 3: IMPACT MATRIX
+with tab_matrix:
+    st.markdown(
+        "<div style='font-size: 1rem; font-weight: 700; color: #0F172A; margin-bottom: 12px;'>📋 Deliverables & Business Impact Breakdown</div>",
+        unsafe_allow_html=True,
+    )
 
-# ---------------------------------------------------------
-# TAB 3: IMPACT & MIGRATION HIGHLIGHTS
-# ---------------------------------------------------------
-with tab_impact:
-    st.markdown("#### **Quantifiable Engineering Achievements**")
-
-    impact_table = pd.DataFrame(
+    impact_df = pd.DataFrame(
         {
-            "Project Initiative": [
-                "Deloitte Cash Plus Pilot",
-                "Deloitte Sales KPI Redesign",
-                "TCS Reporting Automation",
-                "Solenis Dashboard Adoption",
-                "Deloitte Chart Generation",
-                "Solenis Spend Analytics",
+            "Company": [
+                "Deloitte",
+                "Deloitte",
+                "Solenis",
+                "TCS",
+                "Deloitte",
+                "Solenis",
             ],
-            "Quantifiable Outcome": [
-                "60% Reduction in Manual Requests",
-                "40% Reduction in Ad-Hoc Query Volume",
-                "60% Reduction in Manual Effort & Errors",
-                "30% Increase in User Adoption",
-                "90 Minutes/Month Saved",
-                "$450K+ Cost Reduction Opportunities Surfaced",
+            "Key Initiative": [
+                "Cash Plus Self-Serve BI Pilot",
+                "Sales KPI Dashboard Redesign",
+                "Spend & Procurement Analytics",
+                "Reporting Process Automation",
+                "Excel to Tableau Automation",
+                "Working Capital Cash Flow BI",
             ],
-            "Primary Domain": [
+            "Quantifiable Business Impact": [
+                "⚡ 60% Reduction in manual reporting requests",
+                "📉 40% Reduction in ad-hoc query volume",
+                "💰 $450K+ Cost reduction opportunities identified",
+                "🤖 60% Reduction in manual processing errors",
+                "⏱️ ~90 Minutes saved per month",
+                "📈 30% Increase in executive dashboard adoption",
+            ],
+            "Domain": [
                 "Finance / Cash Flow",
-                "Sales Analytics",
-                "Operations",
-                "Finance / Working Capital",
-                "Reporting Automation",
+                "Sales Operations",
                 "Procurement / Spend",
+                "Operations",
+                "Reporting Ops",
+                "Finance / Cash Flow",
             ],
         }
     )
 
     st.dataframe(
-        impact_table,
+        impact_df,
         use_container_width=True,
         hide_index=True,
     )
-
-    st.markdown("<br>", unsafe_allow_html=True)
-    with st.container(border=True):
-        st.markdown("#### **Key Migration & Automation Highlights**")
-        st.markdown(
-            """
-        * **15+ Alteryx Workflows Migrated:** Converted complex Alteryx ETL into reusable KNIME nodes to support cost optimization and standardized outputs.
-        * **20+ Automated Ingestion Pipelines:** Built with standardized input formats and transformation steps to enable repeatable releases across parallel projects.
-        * **12+ Defects Triaged per Release:** Ensured post-migration accuracy and prevented stale metric outputs across enterprise testing and production cycles.
-        """
-        )
