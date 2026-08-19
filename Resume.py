@@ -1,7 +1,10 @@
+import base64
 import pandas as pd
 import streamlit as st
 
+# ---------------------------------------------------------
 # 1. Page Configuration
+# ---------------------------------------------------------
 st.set_page_config(
     page_title="Godi Pavan Deep | Analytics & Insights Engineer",
     page_icon="📊",
@@ -9,7 +12,24 @@ st.set_page_config(
     initial_sidebar_state="collapsed",
 )
 
+
+# Helper function to read a local image file and convert to Base64
+def get_base64_image(image_path):
+    with open(image_path, "rb") as file:
+        return base64.b64encode(file.read()).decode("utf-8")
+
+
+# Try loading your profile picture from your repo; fallback to SVG avatar if not found
+try:
+    # Change "profile.jpg" to match your image file name in GitHub
+    img_b64 = get_base64_image("profile.jpg")
+    img_src = f"data:image/jpeg;base64,{img_b64}"
+except Exception:
+    img_src = "https://api.dicebear.com/7.x/initials/svg?seed=GD&backgroundColor=0284c7"
+
+# ---------------------------------------------------------
 # 2. Fully Responsive Mobile-First CSS Theme
+# ---------------------------------------------------------
 st.markdown(
     """
     <style>
@@ -63,6 +83,7 @@ st.markdown(
         box-shadow: 0 4px 8px rgba(2, 132, 199, 0.15);
         width: clamp(70px, 15vw, 95px);
         height: clamp(70px, 15vw, 95px);
+        object-fit: cover;
     }
 
     .candidate-name {
@@ -297,11 +318,11 @@ st.markdown(
 # 3. Header Hero Section
 # ---------------------------------------------------------
 st.markdown(
-    """
+    f"""
     <div class="hero-card">
         <div class="hero-wrapper">
             <div class="profile-group">
-                <img class="header-avatar" src="https://api.dicebear.com/7.x/initials/svg?seed=GD&backgroundColor=0284c7">
+                <img class="header-avatar" src="{img_src}">
                 <div>
                     <div class="candidate-name">GODI PAVAN DEEP</div>
                     <div class="candidate-title">Analytics & Insights Engineer</div>
