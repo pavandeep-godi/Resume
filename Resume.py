@@ -9,21 +9,30 @@ st.set_page_config(
     initial_sidebar_state="expanded",
 )
 
-# 2. Modern Clean CSS
+# 2. Modern Clean CSS with Dark-Mode Overrides & Soft Light Blue Theme
 st.markdown(
     """
     <style>
-    /* Main Canvas */
+    /* Force Light Theme Colors Regardless of System Dark Mode */
+    :root {
+        color-scheme: light !important;
+    }
+
+    /* Main Canvas Background */
     .stApp {
-        background-color: #F0F9FF;
+        background-color: #F0F9FF !important;
+        color: #0F172A !important;
     }
 
     /* Sidebar Styling */
     [data-testid="stSidebar"] {
-        background-color: #FFFFFF;
-        border-right: 1px solid #E2E8F0;
+        background-color: #E0F2FE !important;
+        border-right: 1px solid #BAE6FD !important;
     }
-    
+    [data-testid="stSidebar"] * {
+        color: #0F172A !important;
+    }
+
     .sidebar-profile {
         text-align: center;
         padding: 10px 0 15px 0;
@@ -31,26 +40,26 @@ st.markdown(
     .sidebar-name {
         font-size: 1.2rem;
         font-weight: 700;
-        color: #0F172A;
+        color: #0F172A !important;
         margin-top: 10px;
         margin-bottom: 2px;
     }
     .sidebar-role {
         font-size: 0.85rem;
         font-weight: 600;
-        color: #0284C7;
+        color: #0284C7 !important;
         margin-bottom: 8px;
     }
     .sidebar-location {
         font-size: 0.8rem;
-        color: #64748B;
+        color: #475569 !important;
     }
-    
+
     /* Header Typography */
     .candidate-name {
         font-size: 2.8rem;
         font-weight: 800;
-        color: #0F172A;
+        color: #0F172A !important;
         letter-spacing: -0.8px;
         margin-bottom: 2px;
         line-height: 1.1;
@@ -58,11 +67,11 @@ st.markdown(
     .candidate-title {
         font-size: 1.35rem;
         font-weight: 600;
-        color: #0284C7;
+        color: #0284C7 !important;
         margin-top: 4px;
         margin-bottom: 12px;
     }
-    
+
     /* Single-Line Contact Details Bar */
     .contact-bar {
         display: flex;
@@ -70,23 +79,33 @@ st.markdown(
         align-items: center;
         gap: 12px;
         font-size: 0.95rem;
-        color: #334155;
+        color: #334155 !important;
         padding-top: 12px;
         white-space: nowrap;
     }
     .contact-bar a {
-        color: #0284C7;
+        color: #0284C7 !important;
         text-decoration: none;
-        font-weight: 500;
+        font-weight: 600;
     }
     .contact-bar a:hover {
         text-decoration: underline;
     }
 
-    /* Recruiter Snapshot Cards */
+    /* Streamlit Cards & Containers Override */
+    div[data-testid="stVerticalBlockBorderWrapper"] {
+        background-color: #E0F2FE !important;
+        border: 1px solid #BAE6FD !important;
+        border-radius: 10px !important;
+    }
+    div[data-testid="stVerticalBlockBorderWrapper"] * {
+        color: #0F172A !important;
+    }
+
+    /* Snapshot Cards */
     .snapshot-card {
-        background-color: #FFFFFF;
-        border: 1px solid #E2E8F0;
+        background-color: #E0F2FE !important;
+        border: 1px solid #BAE6FD !important;
         border-radius: 10px;
         padding: 14px 16px;
         box-shadow: 0 1px 3px rgba(0,0,0,0.03);
@@ -96,27 +115,27 @@ st.markdown(
         font-size: 0.72rem;
         font-weight: 700;
         text-transform: uppercase;
-        color: #64748B;
+        color: #0369A1 !important;
         letter-spacing: 0.6px;
         margin-bottom: 4px;
     }
     .snapshot-value {
         font-size: 0.95rem;
         font-weight: 700;
-        color: #0F172A;
+        color: #0F172A !important;
         line-height: 1.3;
     }
     .snapshot-sub {
         font-size: 0.8rem;
-        color: #64748B;
+        color: #334155 !important;
         margin-top: 3px;
     }
 
-    /* Custom Skill Badges */
+    /* Skill Badges */
     .skill-badge {
-        background-color: #F0F9FF;
-        color: #0369A1;
-        border: 1px solid #BAE6FD;
+        background-color: #0284C7 !important;
+        color: #FFFFFF !important;
+        border: 1px solid #0284C7 !important;
         padding: 6px 14px;
         border-radius: 6px;
         font-size: 0.9rem;
@@ -124,17 +143,35 @@ st.markdown(
         display: inline-block;
         margin: 4px 3px;
     }
-    
+
+    /* Tabs Override */
+    button[data-baseweb="tab"] {
+        background-color: transparent !important;
+        color: #334155 !important;
+        font-weight: 600 !important;
+    }
+    button[data-baseweb="tab"][aria-selected="true"] {
+        color: #0284C7 !important;
+        border-bottom-color: #0284C7 !important;
+    }
+
+    /* Dataframe Styling Override for Night Mode Compatibility */
+    div[data-testid="stDataFrame"] {
+        background-color: #FFFFFF !important;
+        border-radius: 8px !important;
+        border: 1px solid #BAE6FD !important;
+    }
+
     /* Experience Headers */
     .company-title {
         font-size: 1.15rem;
         font-weight: 700;
-        color: #0F172A;
+        color: #0F172A !important;
     }
     .role-dates {
         font-size: 0.9rem;
         font-weight: 600;
-        color: #0284C7;
+        color: #0284C7 !important;
         text-align: right;
     }
     </style>
@@ -143,7 +180,7 @@ st.markdown(
 )
 
 # ---------------------------------------------------------
-# 3. Sidebar Configuration (Cleaned & Minimalist)
+# 3. Sidebar Configuration
 # ---------------------------------------------------------
 with st.sidebar:
     st.markdown(
@@ -285,7 +322,7 @@ with tab_exp:
         c1, c2 = st.columns([3, 1])
         with c1:
             st.markdown(
-                '<div class="company-title">Analytics & Insights Engineer &nbsp;|&nbsp; <span style="color:#475569; font-weight:500;">Deloitte</span></div>',
+                '<div class="company-title">Analytics & Insights Engineer &nbsp;|&nbsp; Deloitte</div>',
                 unsafe_allow_html=True,
             )
         with c2:
@@ -311,7 +348,7 @@ with tab_exp:
         c1, c2 = st.columns([3, 1])
         with c1:
             st.markdown(
-                '<div class="company-title">Senior Data Analyst 2 &nbsp;|&nbsp; <span style="color:#475569; font-weight:500;">Solenis</span></div>',
+                '<div class="company-title">Senior Data Analyst 2 &nbsp;|&nbsp; Solenis</div>',
                 unsafe_allow_html=True,
             )
         with c2:
@@ -336,7 +373,7 @@ with tab_exp:
         c1, c2 = st.columns([3, 1])
         with c1:
             st.markdown(
-                '<div class="company-title">Data Analyst &nbsp;|&nbsp; <span style="color:#475569; font-weight:500;">TCS</span></div>',
+                '<div class="company-title">Data Analyst &nbsp;|&nbsp; TCS</div>',
                 unsafe_allow_html=True,
             )
         with c2:
