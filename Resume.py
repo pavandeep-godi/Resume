@@ -231,7 +231,7 @@ st.markdown(
                 <div>
                     <div class="candidate-name">GODI PAVAN DEEP</div>
                     <div class="candidate-title">Analytics & Insights Engineer</div>
-                    <div class="status-badge">🟢 7+ Years Experience &nbsp;•&nbsp; Open to Senior Analytics Roles</div>
+                    <div class="status-badge">🟢 7+ Years Experience &nbsp;•&nbsp; Open to Senior Analytics Engineer Roles</div>
                 </div>
             </div>
             <div class="contact-bar">
