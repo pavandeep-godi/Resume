@@ -9,25 +9,27 @@ st.set_page_config(
     initial_sidebar_state="expanded",
 )
 
-# 2. Modern Clean CSS with Dark-Mode Overrides & Soft Light Blue Theme
+# 2. Modern Clean & Professional CSS
 st.markdown(
     """
     <style>
-    /* Force Light Theme Colors Regardless of System Dark Mode */
+    /* Force Light Color Scheme for Consistent Contrast */
     :root {
         color-scheme: light !important;
     }
 
-    /* Main Canvas Background */
+    /* Main App Canvas */
     .stApp {
-        background-color: #F0F9FF !important;
+        background-color: #F8FAFC !important;
         color: #0F172A !important;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     }
 
-    /* Sidebar Styling */
+    /* Left Sidebar Redesign */
     [data-testid="stSidebar"] {
-        background-color: #E0F2FE !important;
-        border-right: 1px solid #BAE6FD !important;
+        background-color: #FFFFFF !important;
+        border-right: 1px solid #E2E8F0 !important;
+        box-shadow: 2px 0 8px rgba(0, 0, 0, 0.02);
     }
     [data-testid="stSidebar"] * {
         color: #0F172A !important;
@@ -35,41 +37,66 @@ st.markdown(
 
     .sidebar-profile {
         text-align: center;
-        padding: 10px 0 15px 0;
+        padding: 20px 10px 10px 10px;
+    }
+    .sidebar-avatar {
+        border-radius: 50%;
+        border: 3px solid #0284C7;
+        padding: 3px;
+        background-color: #FFFFFF;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
     }
     .sidebar-name {
-        font-size: 1.2rem;
+        font-size: 1.25rem;
         font-weight: 700;
         color: #0F172A !important;
-        margin-top: 10px;
+        margin-top: 12px;
         margin-bottom: 2px;
+        letter-spacing: -0.3px;
     }
     .sidebar-role {
         font-size: 0.85rem;
         font-weight: 600;
         color: #0284C7 !important;
-        margin-bottom: 8px;
+        margin-bottom: 6px;
     }
     .sidebar-location {
         font-size: 0.8rem;
-        color: #475569 !important;
+        color: #64748B !important;
+        font-weight: 500;
     }
 
-    /* Header Typography */
+    /* Core Focus Card in Sidebar */
+    .sidebar-focus-box {
+        background-color: #F1F5F9;
+        border-radius: 8px;
+        padding: 14px;
+        margin-top: 12px;
+        border-left: 3px solid #0284C7;
+    }
+    .sidebar-focus-title {
+        font-size: 0.8rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        color: #475569 !important;
+        margin-bottom: 8px;
+    }
+
+    /* Main Header Typography */
     .candidate-name {
-        font-size: 2.8rem;
+        font-size: 2.6rem;
         font-weight: 800;
         color: #0F172A !important;
         letter-spacing: -0.8px;
-        margin-bottom: 2px;
         line-height: 1.1;
     }
     .candidate-title {
-        font-size: 1.35rem;
+        font-size: 1.25rem;
         font-weight: 600;
         color: #0284C7 !important;
         margin-top: 4px;
-        margin-bottom: 12px;
+        margin-bottom: 8px;
     }
 
     /* Single-Line Contact Details Bar */
@@ -78,9 +105,9 @@ st.markdown(
         justify-content: flex-end;
         align-items: center;
         gap: 12px;
-        font-size: 0.95rem;
+        font-size: 0.9rem;
         color: #334155 !important;
-        padding-top: 12px;
+        padding-top: 10px;
         white-space: nowrap;
     }
     .contact-bar a {
@@ -92,74 +119,79 @@ st.markdown(
         text-decoration: underline;
     }
 
-    /* Streamlit Cards & Containers Override */
-    div[data-testid="stVerticalBlockBorderWrapper"] {
-        background-color: #E0F2FE !important;
-        border: 1px solid #BAE6FD !important;
-        border-radius: 10px !important;
-    }
-    div[data-testid="stVerticalBlockBorderWrapper"] * {
-        color: #0F172A !important;
-    }
-
-    /* Snapshot Cards */
+    /* Recruiter Quick-Snapshot Cards */
     .snapshot-card {
-        background-color: #E0F2FE !important;
-        border: 1px solid #BAE6FD !important;
+        background-color: #FFFFFF !important;
+        border: 1px solid #E2E8F0 !important;
         border-radius: 10px;
-        padding: 14px 16px;
-        box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+        padding: 16px;
+        box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
         height: 100%;
+        transition: transform 0.15s ease-in-out;
     }
     .snapshot-label {
         font-size: 0.72rem;
         font-weight: 700;
         text-transform: uppercase;
-        color: #0369A1 !important;
+        color: #64748B !important;
         letter-spacing: 0.6px;
-        margin-bottom: 4px;
+        margin-bottom: 6px;
     }
     .snapshot-value {
-        font-size: 0.95rem;
+        font-size: 1.0rem;
         font-weight: 700;
         color: #0F172A !important;
         line-height: 1.3;
     }
     .snapshot-sub {
         font-size: 0.8rem;
-        color: #334155 !important;
-        margin-top: 3px;
+        color: #475569 !important;
+        margin-top: 4px;
     }
 
-    /* Skill Badges */
+    /* Custom Streamlit Container Elevation */
+    div[data-testid="stVerticalBlockBorderWrapper"] {
+        background-color: #FFFFFF !important;
+        border: 1px solid #E2E8F0 !important;
+        border-radius: 10px !important;
+        box-shadow: 0 1px 3px rgba(15, 23, 42, 0.03) !important;
+    }
+    div[data-testid="stVerticalBlockBorderWrapper"] * {
+        color: #0F172A !important;
+    }
+
+    /* Custom Skill Badges */
     .skill-badge {
-        background-color: #0284C7 !important;
-        color: #FFFFFF !important;
-        border: 1px solid #0284C7 !important;
+        background-color: #F1F5F9 !important;
+        color: #0F172A !important;
+        border: 1px solid #CBD5E1 !important;
         padding: 6px 14px;
         border-radius: 6px;
-        font-size: 0.9rem;
+        font-size: 0.88rem;
         font-weight: 600;
         display: inline-block;
         margin: 4px 3px;
     }
 
-    /* Tabs Override */
+    /* Tab Styling */
     button[data-baseweb="tab"] {
         background-color: transparent !important;
-        color: #334155 !important;
+        color: #64748B !important;
         font-weight: 600 !important;
+        font-size: 0.95rem !important;
+        padding: 10px 16px !important;
     }
     button[data-baseweb="tab"][aria-selected="true"] {
         color: #0284C7 !important;
         border-bottom-color: #0284C7 !important;
+        border-bottom-width: 2px !important;
     }
 
-    /* Dataframe Styling Override for Night Mode Compatibility */
+    /* Table Styling Override */
     div[data-testid="stDataFrame"] {
         background-color: #FFFFFF !important;
         border-radius: 8px !important;
-        border: 1px solid #BAE6FD !important;
+        border: 1px solid #E2E8F0 !important;
     }
 
     /* Experience Headers */
@@ -186,7 +218,7 @@ with st.sidebar:
     st.markdown(
         """
         <div class="sidebar-profile">
-            <img src="https://api.dicebear.com/7.x/initials/svg?seed=GD&backgroundColor=0284c7" width="100" style="border-radius: 50%;">
+            <img class="sidebar-avatar" src="https://api.dicebear.com/7.x/initials/svg?seed=GD&backgroundColor=0284c7" width="90">
             <div class="sidebar-name">Godi Pavan Deep</div>
             <div class="sidebar-role">Analytics & Insights Engineer</div>
             <div class="sidebar-location">📍 Hyderabad, India</div>
@@ -195,16 +227,23 @@ with st.sidebar:
         unsafe_allow_html=True,
     )
 
-    st.markdown("---")
-    st.markdown("#### **⚡ Core Focus**")
     st.markdown(
         """
-        - **Pipeline Automation:** SQL, Python, KNIME
-        - **Data Migration:** AWS, IBM DataStage, SAP
-        - **BI & Dashboards:** Tableau, Power BI
-        - **Domain:** Sales, Finance & Working Capital
-        """
+        <div class="sidebar-focus-box">
+            <div class="sidebar-focus-title">⚡ Core Technical Expertise</div>
+            <div style="font-size: 0.85rem; color: #334155; line-height: 1.6;">
+                • <b>Pipelines:</b> SQL, Python, KNIME<br>
+                • <b>Data Platforms:</b> AWS, DataStage, SAP<br>
+                • <b>BI & Visuals:</b> Tableau, Power BI<br>
+                • <b>Domains:</b> Sales, Finance & Ops
+            </div>
+        </div>
+        """,
+        unsafe_allow_html=True,
     )
+
+    st.markdown("<br>", unsafe_allow_html=True)
+    st.caption("✨ Built with Streamlit")
 
 
 # ---------------------------------------------------------
@@ -294,13 +333,13 @@ st.markdown("<br>", unsafe_allow_html=True)
 
 # Executive Summary Container
 with st.container(border=True):
-    st.markdown("#### **📌 Professional Profile**")
+    st.markdown("#### **📌 Executive Summary**")
     st.write(
         """
-        **Analytics & Insights Engineer (7+ years)** focused on turning messy data into reliable analytics. Build and maintain 
-        **SQL/Python + KNIME-based ETL pipelines**, validate data quality, and deliver **Tableau dashboards + KPI datasets** used by 
-        business teams across sales and finance. Experience migrating workflows from manual/Alteryx processes into automated 
-        pipelines, reducing report turnaround time and ad-hoc load by double digits.
+        **Analytics & Insights Engineer (7+ years)** focused on turning complex raw data into reliable business intelligence. 
+        Specialized in building and scaling **SQL/Python + KNIME-based ETL pipelines**, enforcing rigorous data quality standards, 
+        and deploying **Tableau dashboards & KPI models** for executive leadership across sales and finance operations. 
+        Proven track record of migrating legacy/manual reporting into fully automated cloud-supported workflows.
         """
     )
 
@@ -310,7 +349,7 @@ st.markdown("<br>", unsafe_allow_html=True)
 # 6. Structured Tabs Layout
 # ---------------------------------------------------------
 tab_exp, tab_skills, tab_impact = st.tabs(
-    ["💼 Professional Experience", "🛠️ Technical Skills & Tools", "📊 Migration & Impact Highlights"]
+    ["💼 Professional Experience", "🛠️ Technical Skills & Tools", "📊 Impact Highlights"]
 )
 
 # ---------------------------------------------------------
