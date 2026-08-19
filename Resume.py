@@ -9,7 +9,7 @@ st.set_page_config(
     initial_sidebar_state="collapsed",
 )
 
-# 2. Modern Executive CSS Theme
+# 2. Fully Responsive Mobile-First CSS Theme
 st.markdown(
     """
     <style>
@@ -35,29 +35,46 @@ st.markdown(
         background: linear-gradient(135deg, #FFFFFF 0%, #F1F5F9 100%);
         border: 1px solid #E2E8F0;
         border-radius: 16px;
-        padding: 24px;
+        padding: clamp(16px, 3vw, 24px);
         box-shadow: 0 4px 12px rgba(15, 23, 42, 0.03);
-        margin-bottom: 20px;
+        margin-bottom: 16px;
+    }
+
+    .hero-wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+    }
+
+    .profile-group {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        flex-wrap: wrap;
     }
 
     .header-avatar {
         border-radius: 50%;
         border: 3px solid #0284C7;
-        padding: 3px;
+        padding: 2px;
         background-color: #FFFFFF;
         box-shadow: 0 4px 8px rgba(2, 132, 199, 0.15);
+        width: clamp(70px, 15vw, 95px);
+        height: clamp(70px, 15vw, 95px);
     }
 
     .candidate-name {
-        font-size: 2.4rem;
+        font-size: clamp(1.6rem, 5vw, 2.4rem);
         font-weight: 800;
         color: #0F172A !important;
         letter-spacing: -0.8px;
-        line-height: 1.1;
+        line-height: 1.15;
     }
 
     .candidate-title {
-        font-size: 1.2rem;
+        font-size: clamp(1.0rem, 3vw, 1.2rem);
         font-weight: 700;
         color: #0284C7 !important;
         margin-top: 4px;
@@ -75,14 +92,20 @@ st.markdown(
         margin-top: 6px;
     }
 
+    /* Mobile Responsive Contact Bar */
     .contact-bar {
         display: flex;
         flex-wrap: wrap;
-        justify-content: flex-end;
         align-items: center;
-        gap: 12px;
-        font-size: 0.88rem;
+        gap: 8px 12px;
+        font-size: 0.85rem;
         color: #475569 !important;
+    }
+    .contact-item {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        white-space: nowrap;
     }
     .contact-bar a {
         color: #0284C7 !important;
@@ -93,7 +116,42 @@ st.markdown(
         text-decoration: underline;
     }
 
-    /* Hero Metric Highlights */
+    /* Value Proposition Banner */
+    .val-card {
+        background: #FFFFFF;
+        border: 1px solid #E2E8F0;
+        border-radius: 12px;
+        padding: clamp(14px, 3vw, 20px);
+        box-shadow: 0 2px 4px rgba(15, 23, 42, 0.02);
+        margin-bottom: 20px;
+    }
+
+    .pillar-wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-top: 10px;
+    }
+
+    .pillar-pill {
+        background-color: #EFF6FF;
+        color: #1E40AF;
+        border: 1px solid #BFDBFE;
+        font-size: 0.8rem;
+        font-weight: 700;
+        padding: 4px 10px;
+        border-radius: 6px;
+        display: inline-block;
+    }
+
+    /* Responsive CSS Grid for Metric Cards (Auto Stacks on Mobile) */
+    .metrics-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 12px;
+        margin-bottom: 20px;
+    }
+
     .metric-card {
         background: #FFFFFF;
         border: 1px solid #E2E8F0;
@@ -112,13 +170,12 @@ st.markdown(
     .metric-card.accent-amber { border-left-color: #F59E0B; }
 
     .metric-val {
-        font-size: 2rem;
+        font-size: clamp(1.75rem, 4vw, 2rem);
         font-weight: 800;
-        color: #0F172A;
         line-height: 1;
     }
     .metric-lbl {
-        font-size: 0.82rem;
+        font-size: 0.8rem;
         font-weight: 700;
         color: #64748B;
         text-transform: uppercase;
@@ -129,31 +186,16 @@ st.markdown(
         font-size: 0.78rem;
         color: #475569;
         margin-top: 4px;
+        line-height: 1.3;
     }
 
-    /* Value Proposition Banner */
-    .val-card {
-        background: #FFFFFF;
-        border: 1px solid #E2E8F0;
-        border-radius: 12px;
-        padding: 20px;
-        box-shadow: 0 2px 4px rgba(15, 23, 42, 0.02);
-        margin-bottom: 24px;
-    }
-    .pillar-pill {
-        background-color: #EFF6FF;
-        color: #1E40AF;
-        border: 1px solid #BFDBFE;
-        font-size: 0.82rem;
-        font-weight: 700;
-        padding: 4px 12px;
-        border-radius: 6px;
-        display: inline-block;
-        margin-right: 8px;
-        margin-bottom: 8px;
+    /* Responsive Skills Grid */
+    .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 12px;
     }
 
-    /* Skills Grid UI */
     .skill-card {
         background: #FFFFFF;
         border: 1px solid #E2E8F0;
@@ -166,21 +208,27 @@ st.markdown(
         font-size: 0.95rem;
         font-weight: 700;
         color: #0F172A;
-        margin-bottom: 12px;
+        margin-bottom: 10px;
         display: flex;
         align-items: center;
         gap: 8px;
     }
+
+    .chips-wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+    }
+
     .chip {
         display: inline-block;
         background-color: #F1F5F9;
         color: #334155;
         border: 1px solid #CBD5E1;
-        padding: 5px 11px;
+        padding: 4px 10px;
         border-radius: 20px;
-        font-size: 0.82rem;
+        font-size: 0.8rem;
         font-weight: 600;
-        margin: 3px;
     }
     .chip-primary {
         background-color: #E0F2FE;
@@ -188,13 +236,33 @@ st.markdown(
         border-color: #BAE6FD;
     }
 
+    /* Experience Header Styling (Mobile Responsive) */
+    .exp-header {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 4px 12px;
+        margin-bottom: 8px;
+    }
+    .exp-company {
+        font-size: clamp(1.05rem, 3vw, 1.2rem);
+        font-weight: 800;
+        color: #0F172A;
+    }
+    .exp-date {
+        font-size: 0.85rem;
+        font-weight: 700;
+        color: #0284C7;
+    }
+
     /* Tab Layout Tweaks */
     button[data-baseweb="tab"] {
         background-color: transparent !important;
         color: #64748B !important;
         font-weight: 700 !important;
-        font-size: 1rem !important;
-        padding: 12px 20px !important;
+        font-size: clamp(0.88rem, 2.5vw, 1rem) !important;
+        padding: 10px 12px !important;
     }
     button[data-baseweb="tab"][aria-selected="true"] {
         color: #0284C7 !important;
@@ -202,17 +270,23 @@ st.markdown(
         border-bottom-width: 3px !important;
     }
 
-    /* Experience Header Styling */
-    .exp-company {
-        font-size: 1.2rem;
-        font-weight: 800;
-        color: #0F172A;
+    /* Mobile Table Scroll Container */
+    .table-container {
+        width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
     }
-    .exp-date {
-        font-size: 0.88rem;
-        font-weight: 700;
-        color: #0284C7;
-        text-align: right;
+
+    /* Media Query Adjustments for Small Screens */
+    @media (max-width: 640px) {
+        .hero-wrapper {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        .contact-bar {
+            justify-content: flex-start;
+            font-size: 0.8rem;
+        }
     }
     </style>
 """,
@@ -225,21 +299,21 @@ st.markdown(
 st.markdown(
     """
     <div class="hero-card">
-        <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px;">
-            <div style="display: flex; align-items: center; gap: 20px; flex-wrap: wrap;">
-                <img class="header-avatar" src="https://api.dicebear.com/7.x/initials/svg?seed=GD&backgroundColor=0284c7" width="95">
+        <div class="hero-wrapper">
+            <div class="profile-group">
+                <img class="header-avatar" src="https://api.dicebear.com/7.x/initials/svg?seed=GD&backgroundColor=0284c7">
                 <div>
                     <div class="candidate-name">GODI PAVAN DEEP</div>
                     <div class="candidate-title">Analytics & Insights Engineer</div>
-                    <div class="status-badge">🟢 7+ Years Experience &nbsp;•&nbsp; Open to Senior Analytics Engineer Roles</div>
+                    <div class="status-badge">🟢 7+ Years Experience &nbsp;•&nbsp; Open to Senior Analytics Roles</div>
                 </div>
             </div>
             <div class="contact-bar">
-                <span>📍 Hyderabad, India</span><span>•</span>
-                <span>📧 <a href="mailto:pavandeep459@gmail.com">pavandeep459@gmail.com</a></span><span>•</span>
-                <span>📱 +91 8099490199</span><br>
-                <span>🔗 <a href="https://www.linkedin.com/in/pavan-deep-godi-3aa8ba16a/" target="_blank">LinkedIn Profile</a></span><span>•</span>
-                <span>💻 <a href="https://github.com/pavandeep-godi" target="_blank">GitHub Repository</a></span>
+                <span class="contact-item">📍 Hyderabad, India</span>
+                <span class="contact-item">📧 <a href="mailto:pavandeep459@gmail.com">pavandeep459@gmail.com</a></span>
+                <span class="contact-item">📱 +91 8099490199</span>
+                <span class="contact-item">🔗 <a href="https://www.linkedin.com/in/pavan-deep-godi-3aa8ba16a/" target="_blank">LinkedIn</a></span>
+                <span class="contact-item">💻 <a href="https://github.com/pavandeep-godi" target="_blank">GitHub</a></span>
             </div>
         </div>
     </div>
@@ -253,13 +327,13 @@ st.markdown(
 st.markdown(
     """
     <div class="val-card">
-        <div style="font-size: 1.05rem; font-weight: 800; color: #0F172A; margin-bottom: 8px;">
+        <div style="font-size: 1.05rem; font-weight: 800; color: #0F172A; margin-bottom: 6px;">
             🎯 Executive Profile & Value Proposition
         </div>
-        <div style="font-size: 0.95rem; color: #334155; line-height: 1.6; margin-bottom: 14px;">
+        <div style="font-size: 0.92rem; color: #334155; line-height: 1.6;">
             <b>Analytics & Insights Engineer</b> with 7+ years of experience transforming complex multi-source enterprise data into reliable, automated analytics architectures. Specialized in engineering high-throughput <b>SQL/Python + KNIME pipelines</b>, modernizing legacy reporting workflows, and architecting executive-level <b>Tableau & BI dashboards</b> across global sales and financial operations.
         </div>
-        <div>
+        <div class="pillar-wrapper">
             <span class="pillar-pill">⚡ Automated ETL & Data Pipelines</span>
             <span class="pillar-pill">📊 Enterprise BI & Dashboarding</span>
             <span class="pillar-pill">🎯 Process Optimization & Migration</span>
@@ -272,64 +346,40 @@ st.markdown(
 )
 
 # ---------------------------------------------------------
-# 5. Hero Impact Highlights (High-Impact Stat Cards)
+# 5. Responsive Hero Impact Highlights (Auto-Stack Grid)
 # ---------------------------------------------------------
 st.markdown(
-    "<div style='font-size: 1.1rem; font-weight: 800; color: #0F172A; margin-bottom: 12px;'>📈 High-Impact Engineering Achievements</div>",
+    "<div style='font-size: 1.05rem; font-weight: 800; color: #0F172A; margin-bottom: 10px;'>📈 High-Impact Engineering Achievements</div>",
     unsafe_allow_html=True,
 )
 
-m1, m2, m3, m4 = st.columns(4)
-
-with m1:
-    st.markdown(
-        """
+st.markdown(
+    """
+    <div class="metrics-grid">
         <div class="metric-card">
             <div class="metric-val" style="color: #0284C7;">60%</div>
             <div class="metric-lbl">Manual Request Reduction</div>
             <div class="metric-sub">Built self-serve Tableau BI for Deloitte Cash Plus Pilot (30+ client users)</div>
         </div>
-        """,
-        unsafe_allow_html=True,
-    )
-
-with m2:
-    st.markdown(
-        """
         <div class="metric-card accent-emerald">
             <div class="metric-val" style="color: #10B981;">$450K+</div>
             <div class="metric-lbl">Cost Savings Discovered</div>
             <div class="metric-sub">Surfaced targeted operational savings via spend driver analytics at Solenis</div>
         </div>
-        """,
-        unsafe_allow_html=True,
-    )
-
-with m3:
-    st.markdown(
-        """
         <div class="metric-card accent-indigo">
             <div class="metric-val" style="color: #6366F1;">15+</div>
             <div class="metric-lbl">ETL Workflows Migrated</div>
             <div class="metric-sub">Migrated complex Alteryx legacy models to standardized KNIME nodes</div>
         </div>
-        """,
-        unsafe_allow_html=True,
-    )
-
-with m4:
-    st.markdown(
-        """
         <div class="metric-card accent-amber">
             <div class="metric-val" style="color: #D97706;">90 Min</div>
             <div class="metric-lbl">Saved Per Month</div>
             <div class="metric-sub">Automated recurring chart generation from complex Excel templates</div>
         </div>
-        """,
-        unsafe_allow_html=True,
-    )
-
-st.markdown("<br>", unsafe_allow_html=True)
+    </div>
+""",
+    unsafe_allow_html=True,
+)
 
 # ---------------------------------------------------------
 # 6. Main Content Tabs
@@ -337,7 +387,7 @@ st.markdown("<br>", unsafe_allow_html=True)
 tab_exp, tab_skills, tab_matrix = st.tabs(
     [
         "💼 Career Experience",
-        "🛠️ Technical Ecosystem & Tools",
+        "🛠️ Technical Ecosystem",
         "📊 Quantified Impact Matrix",
     ]
 )
@@ -346,18 +396,15 @@ tab_exp, tab_skills, tab_matrix = st.tabs(
 with tab_exp:
     # Deloitte
     with st.container(border=True):
-        c1, c2 = st.columns([3, 1])
-        with c1:
-            st.markdown(
-                '<div class="exp-company">Analytics & Insights Engineer &nbsp;|&nbsp; Deloitte</div>',
-                unsafe_allow_html=True,
-            )
-        with c2:
-            st.markdown(
-                '<div class="exp-date">June 2024 – Present</div>',
-                unsafe_allow_html=True,
-            )
-
+        st.markdown(
+            """
+            <div class="exp-header">
+                <div class="exp-company">Analytics & Insights Engineer &nbsp;|&nbsp; Deloitte</div>
+                <div class="exp-date">June 2024 – Present</div>
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
         st.markdown(
             """
         * **ETL Migration & Cost Optimization:** Converted **15+ Alteryx workflows into KNIME-based ETL**, consolidating repeated transformations into reusable nodes to drive cost optimization and consistent dataset outputs.
@@ -371,18 +418,15 @@ with tab_exp:
 
     # Solenis
     with st.container(border=True):
-        c1, c2 = st.columns([3, 1])
-        with c1:
-            st.markdown(
-                '<div class="exp-company">Senior Data Analyst 2 &nbsp;|&nbsp; Solenis</div>',
-                unsafe_allow_html=True,
-            )
-        with c2:
-            st.markdown(
-                '<div class="exp-date">November 2021 – May 2024</div>',
-                unsafe_allow_html=True,
-            )
-
+        st.markdown(
+            """
+            <div class="exp-header">
+                <div class="exp-company">Senior Data Analyst 2 &nbsp;|&nbsp; Solenis</div>
+                <div class="exp-date">November 2021 – May 2024</div>
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
         st.markdown(
             """
         * **Working Capital Analytics:** Built a working capital cash-flow dashboard and refined KPI definitions based on stakeholder feedback, increasing adoption by **30%**.
@@ -394,18 +438,15 @@ with tab_exp:
 
     # TCS
     with st.container(border=True):
-        c1, c2 = st.columns([3, 1])
-        with c1:
-            st.markdown(
-                '<div class="exp-company">Data Analyst &nbsp;|&nbsp; TCS</div>',
-                unsafe_allow_html=True,
-            )
-        with c2:
-            st.markdown(
-                '<div class="exp-date">April 2019 – November 2021</div>',
-                unsafe_allow_html=True,
-            )
-
+        st.markdown(
+            """
+            <div class="exp-header">
+                <div class="exp-company">Data Analyst &nbsp;|&nbsp; TCS</div>
+                <div class="exp-date">April 2019 – November 2021</div>
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
         st.markdown(
             """
         * **Cloud Data Processing:** Built a **PySpark ETL proof of concept on AWS** to separate and analyze historical vs current datasets for faster analysis-ready extracts.
@@ -414,21 +455,14 @@ with tab_exp:
         """
         )
 
-# TAB 2: SKILLS ECOSYSTEM
+# TAB 2: SKILLS ECOSYSTEM (Responsive CSS Grid)
 with tab_skills:
     st.markdown(
-        "<div style='font-size: 1rem; font-weight: 700; color: #0F172A; margin-bottom: 12px;'>🛠️ Structured Skill Architecture</div>",
-        unsafe_allow_html=True,
-    )
-
-    sk1, sk2 = st.columns(2)
-
-    with sk1:
-        st.markdown(
-            """
+        """
+        <div class="skills-grid">
             <div class="skill-card">
                 <div class="skill-title">⚙️ Analytics Engineering & Pipelines</div>
-                <div>
+                <div class="chips-wrapper">
                     <span class="chip chip-primary">KNIME (Advanced)</span>
                     <span class="chip chip-primary">AWS Glue</span>
                     <span class="chip">IBM DataStage</span>
@@ -437,56 +471,36 @@ with tab_skills:
                     <span class="chip">dbt (Learning)</span>
                 </div>
             </div>
-            """,
-            unsafe_allow_html=True,
-        )
-        st.markdown("<br>", unsafe_allow_html=True)
-
-        st.markdown(
-            """
             <div class="skill-card">
                 <div class="skill-title">💻 Programming & Querying</div>
-                <div>
+                <div class="chips-wrapper">
                     <span class="chip chip-primary">SQL (Complex Joins/CTEs)</span>
                     <span class="chip chip-primary">Python (Pandas/Automation)</span>
                     <span class="chip">PySpark (POC)</span>
                 </div>
             </div>
-            """,
-            unsafe_allow_html=True,
-        )
-
-    with sk2:
-        st.markdown(
-            """
             <div class="skill-card">
                 <div class="skill-title">📊 BI & Data Visualization</div>
-                <div>
+                <div class="chips-wrapper">
                     <span class="chip chip-primary">Tableau Desktop & Server</span>
                     <span class="chip chip-primary">Power BI</span>
                     <span class="chip">Tableau Prep</span>
                     <span class="chip">Executive Dashboards</span>
                 </div>
             </div>
-            """,
-            unsafe_allow_html=True,
-        )
-        st.markdown("<br>", unsafe_allow_html=True)
-
-        st.markdown(
-            """
             <div class="skill-card">
                 <div class="skill-title">☁️ Data Platforms & Warehousing</div>
-                <div>
+                <div class="chips-wrapper">
                     <span class="chip chip-primary">AWS (Athena / S3)</span>
                     <span class="chip">SQL Server</span>
-                    <span class="chip">Snowflake (Learning)</span>
+                    <span class="chip">Snowflake (Hands-on)</span>
                     <span class="chip">Advanced Excel</span>
                 </div>
             </div>
-            """,
-            unsafe_allow_html=True,
-        )
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
 
 # TAB 3: IMPACT MATRIX
 with tab_matrix:
@@ -532,8 +546,10 @@ with tab_matrix:
         }
     )
 
+    st.markdown('<div class="table-container">', unsafe_allow_html=True)
     st.dataframe(
         impact_df,
         use_container_width=True,
         hide_index=True,
     )
+    st.markdown("</div>", unsafe_allow_html=True)
