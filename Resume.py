@@ -17,6 +17,34 @@ st.markdown(
     .stApp {
         background-color: #F8FAFC;
     }
+
+    /* Sidebar Styling */
+    [data-testid="stSidebar"] {
+        background-color: #FFFFFF;
+        border-right: 1px solid #E2E8F0;
+    }
+    
+    .sidebar-profile {
+        text-align: center;
+        padding: 10px 0 15px 0;
+    }
+    .sidebar-name {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: #0F172A;
+        margin-top: 10px;
+        margin-bottom: 2px;
+    }
+    .sidebar-role {
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: #0284C7;
+        margin-bottom: 8px;
+    }
+    .sidebar-location {
+        font-size: 0.8rem;
+        color: #64748B;
+    }
     
     /* Header Typography */
     .candidate-name {
@@ -115,32 +143,30 @@ st.markdown(
 )
 
 # ---------------------------------------------------------
-# 3. Sidebar Configuration
+# 3. Sidebar Configuration (Cleaned & Minimalist)
 # ---------------------------------------------------------
 with st.sidebar:
-    st.image(
-        "https://api.dicebear.com/7.x/initials/svg?seed=GD&backgroundColor=0284c7",
-        width=90,
-    )
-    st.markdown("### **Godi Pavan Deep**")
-    st.caption("📍 Hyderabad, India | Open to Opportunities")
-
-    st.markdown("---")
-    st.markdown("#### 📞 Contact Information")
-    st.markdown("📧 **Email:** [pavandeep459@gmail.com](mailto:pavandeep459@gmail.com)")
-    st.markdown("📱 **Phone:** +91 8099490199")
-    st.markdown("💼 **LinkedIn:** [linkedin.com/in/pavan-deep-godi](https://www.linkedin.com/in/pavan-deep-godi-3aa8ba16a/)")
-    st.markdown("💻 **GitHub:** [github.com/pavandeep-godi](https://github.com/pavandeep-godi)")
-
-    st.markdown("---")
-    st.markdown("#### ⚡ Core Stack Summary")
     st.markdown(
         """
-    - **Languages:** SQL, Python
-    - **ETL/ELT:** KNIME, AWS Glue, Alteryx, IBM DataStage
-    - **Visualization:** Tableau, Power BI
-    - **Data Stores:** AWS (Athena), SQL Server
-    """
+        <div class="sidebar-profile">
+            <img src="https://api.dicebear.com/7.x/initials/svg?seed=GD&backgroundColor=0284c7" width="100" style="border-radius: 50%;">
+            <div class="sidebar-name">Godi Pavan Deep</div>
+            <div class="sidebar-role">Analytics & Insights Engineer</div>
+            <div class="sidebar-location">📍 Hyderabad, India</div>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+    st.markdown("---")
+    st.markdown("#### **⚡ Core Focus**")
+    st.markdown(
+        """
+        - **Pipeline Automation:** SQL, Python, KNIME
+        - **Data Migration:** AWS, IBM DataStage, SAP
+        - **BI & Dashboards:** Tableau, Power BI
+        - **Domain:** Sales, Finance & Working Capital
+        """
     )
 
 
