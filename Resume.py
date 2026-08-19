@@ -112,8 +112,8 @@ with col_contact:
     st.markdown(
         """
     <div style="text-align: right; padding-top: 10px;">
-        📧 <b>your.email@example.com</b> | 📱 <b>+91 98765 43210</b><br>
-        💼 <a href="https://linkedin.com" target="_blank">LinkedIn</a> | 💻 <a href="https://github.com" target="_blank">GitHub</a>
+        📧 <b>pavandeep459@gmail.com</b> | 📱 <b>+91 8099490199</b><br>
+        💼 <a href="https://www.linkedin.com/in/pavan-deep-godi-3aa8ba16a/" target="_blank">LinkedIn</a> | 💻 <a href="https://github.com/pavandeep-godi" target="_blank">GitHub</a>
     </div>
     """,
         unsafe_allow_html=True,
