@@ -20,7 +20,7 @@ st.markdown(
     
     /* Header Typography */
     .candidate-name {
-        font-size: 3.0rem;
+        font-size: 2.8rem;
         font-weight: 800;
         color: #0F172A;
         letter-spacing: -0.8px;
@@ -28,13 +28,33 @@ st.markdown(
         line-height: 1.1;
     }
     .candidate-title {
-        font-size: 1.4rem;
+        font-size: 1.35rem;
         font-weight: 600;
         color: #0284C7;
         margin-top: 4px;
         margin-bottom: 12px;
     }
     
+    /* Single-Line Contact Details Bar */
+    .contact-bar {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        gap: 12px;
+        font-size: 0.95rem;
+        color: #334155;
+        padding-top: 12px;
+        white-space: nowrap;
+    }
+    .contact-bar a {
+        color: #0284C7;
+        text-decoration: none;
+        font-weight: 500;
+    }
+    .contact-bar a:hover {
+        text-decoration: underline;
+    }
+
     /* Recruiter Snapshot Cards */
     .snapshot-card {
         background-color: #FFFFFF;
@@ -127,7 +147,7 @@ with st.sidebar:
 # ---------------------------------------------------------
 # 4. Main Header
 # ---------------------------------------------------------
-col_header, col_contact = st.columns([7, 3])
+col_header, col_contact = st.columns([6, 4])
 
 with col_header:
     st.markdown('<div class="candidate-name">GODI PAVAN DEEP</div>', unsafe_allow_html=True)
@@ -139,10 +159,14 @@ with col_header:
 with col_contact:
     st.markdown(
         """
-    <div style="text-align: right; font-size: 0.95rem; color: #334155; padding-top: 8px;">
-        📧 <b>pavandeep459@gmail.com</b> &nbsp;|&nbsp; 📱 <b>+91 8099490199</b><br>
-        💼 <a href="https://www.linkedin.com/in/pavan-deep-godi-3aa8ba16a/" target="_blank" style="color:#0284C7; text-decoration:none;">LinkedIn Profile</a> &nbsp;|&nbsp; 
-        💻 <a href="https://github.com/pavandeep-godi" target="_blank" style="color:#0284C7; text-decoration:none;">GitHub Profile</a>
+    <div class="contact-bar">
+        <span>📧 <b>pavandeep459@gmail.com</b></span>
+        <span>|</span>
+        <span>📱 <b>+91 8099490199</b></span>
+        <span>|</span>
+        <a href="https://www.linkedin.com/in/pavan-deep-godi-3aa8ba16a/" target="_blank">LinkedIn</a>
+        <span>|</span>
+        <a href="https://github.com/pavandeep-godi" target="_blank">GitHub</a>
     </div>
     """,
         unsafe_allow_html=True,
@@ -329,7 +353,6 @@ with tab_skills:
         col1, col2 = st.columns(2)
         items_list = list(skills_dict.items())
 
-        # Distribute skill categories across two clean columns
         with col1:
             for category, items in items_list[:3]:
                 st.markdown(f"**{category}**")
