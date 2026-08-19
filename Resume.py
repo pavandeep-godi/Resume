@@ -6,7 +6,7 @@ st.set_page_config(
     page_title="Godi Pavan Deep | Analytics & Insights Engineer",
     page_icon="📊",
     layout="wide",
-    initial_sidebar_state="expanded",
+    initial_sidebar_state="collapsed",
 )
 
 # 2. Modern Clean & Professional CSS
@@ -25,62 +25,21 @@ st.markdown(
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     }
 
-    /* Left Sidebar Redesign */
+    /* Completely Hide Sidebar */
     [data-testid="stSidebar"] {
-        background-color: #FFFFFF !important;
-        border-right: 1px solid #E2E8F0 !important;
-        box-shadow: 2px 0 8px rgba(0, 0, 0, 0.02);
+        display: none !important;
     }
-    [data-testid="stSidebar"] * {
-        color: #0F172A !important;
+    [data-testid="collapsedControl"] {
+        display: none !important;
     }
 
-    .sidebar-profile {
-        text-align: center;
-        padding: 20px 10px 10px 10px;
-    }
-    .sidebar-avatar {
+    /* Main Page Profile Image */
+    .header-avatar {
         border-radius: 50%;
         border: 3px solid #0284C7;
         padding: 3px;
         background-color: #FFFFFF;
         box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-    }
-    .sidebar-name {
-        font-size: 1.25rem;
-        font-weight: 700;
-        color: #0F172A !important;
-        margin-top: 12px;
-        margin-bottom: 2px;
-        letter-spacing: -0.3px;
-    }
-    .sidebar-role {
-        font-size: 0.85rem;
-        font-weight: 600;
-        color: #0284C7 !important;
-        margin-bottom: 6px;
-    }
-    .sidebar-location {
-        font-size: 0.8rem;
-        color: #64748B !important;
-        font-weight: 500;
-    }
-
-    /* Core Focus Card in Sidebar */
-    .sidebar-focus-box {
-        background-color: #F1F5F9;
-        border-radius: 8px;
-        padding: 14px;
-        margin-top: 12px;
-        border-left: 3px solid #0284C7;
-    }
-    .sidebar-focus-title {
-        font-size: 0.8rem;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-        color: #475569 !important;
-        margin-bottom: 8px;
     }
 
     /* Main Header Typography */
@@ -96,7 +55,12 @@ st.markdown(
         font-weight: 600;
         color: #0284C7 !important;
         margin-top: 4px;
-        margin-bottom: 8px;
+        margin-bottom: 4px;
+    }
+    .candidate-location {
+        font-size: 0.9rem;
+        color: #64748B !important;
+        font-weight: 500;
     }
 
     /* Single-Line Contact Details Bar */
@@ -212,44 +176,17 @@ st.markdown(
 )
 
 # ---------------------------------------------------------
-# 3. Sidebar Configuration
+# 3. Main Header (With Profile Picture Integrated)
 # ---------------------------------------------------------
-with st.sidebar:
+col_img, col_header, col_contact = st.columns([1.2, 5.8, 3])
+
+with col_img:
     st.markdown(
         """
-        <div class="sidebar-profile">
-            <img class="sidebar-avatar" src="https://api.dicebear.com/7.x/initials/svg?seed=GD&backgroundColor=0284c7" width="90">
-            <div class="sidebar-name">Godi Pavan Deep</div>
-            <div class="sidebar-role">Analytics & Insights Engineer</div>
-            <div class="sidebar-location">📍 Hyderabad, India</div>
-        </div>
+        <img class="header-avatar" src="https://api.dicebear.com/7.x/initials/svg?seed=GD&backgroundColor=0284c7" width="105">
         """,
         unsafe_allow_html=True,
     )
-
-    st.markdown(
-        """
-        <div class="sidebar-focus-box">
-            <div class="sidebar-focus-title">⚡ Core Technical Expertise</div>
-            <div style="font-size: 0.85rem; color: #334155; line-height: 1.6;">
-                • <b>Pipelines:</b> SQL, Python, KNIME<br>
-                • <b>Data Platforms:</b> AWS, DataStage, SAP<br>
-                • <b>BI & Visuals:</b> Tableau, Power BI<br>
-                • <b>Domains:</b> Sales, Finance & Ops
-            </div>
-        </div>
-        """,
-        unsafe_allow_html=True,
-    )
-
-    st.markdown("<br>", unsafe_allow_html=True)
-    st.caption("✨ Built with Streamlit")
-
-
-# ---------------------------------------------------------
-# 4. Main Header
-# ---------------------------------------------------------
-col_header, col_contact = st.columns([6, 4])
 
 with col_header:
     st.markdown('<div class="candidate-name">GODI PAVAN DEEP</div>', unsafe_allow_html=True)
@@ -257,6 +194,7 @@ with col_header:
         '<div class="candidate-title">Analytics & Insights Engineer (7+ Years Experience)</div>',
         unsafe_allow_html=True,
     )
+    st.markdown('<div class="candidate-location">📍 Hyderabad, India</div>', unsafe_allow_html=True)
 
 with col_contact:
     st.markdown(
@@ -277,7 +215,7 @@ with col_contact:
 st.markdown("<br>", unsafe_allow_html=True)
 
 # ---------------------------------------------------------
-# 5. Recruiter Quick-Snapshot Cards
+# 4. Recruiter Quick-Snapshot Cards
 # ---------------------------------------------------------
 c1, c2, c3, c4 = st.columns(4)
 
@@ -346,7 +284,7 @@ with st.container(border=True):
 st.markdown("<br>", unsafe_allow_html=True)
 
 # ---------------------------------------------------------
-# 6. Structured Tabs Layout
+# 5. Structured Tabs Layout
 # ---------------------------------------------------------
 tab_exp, tab_skills, tab_impact = st.tabs(
     ["💼 Professional Experience", "🛠️ Technical Skills & Tools", "📊 Impact Highlights"]
