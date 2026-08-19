@@ -15,7 +15,7 @@ st.markdown(
     <style>
     /* Main Canvas */
     .stApp {
-        background-color: #F8FAFC;
+        background-color: #F0F9FF;
     }
 
     /* Sidebar Styling */
