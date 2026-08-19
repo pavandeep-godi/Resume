@@ -1,5 +1,4 @@
 import pandas as pd
-import plotly.express as px
 import streamlit as st
 
 # 1. Page Configuration
@@ -19,7 +18,7 @@ st.markdown(
         background-color: #F8FAFC;
     }
     
-    /* Header Typography (Enlarged Name & Title) */
+    /* Header Typography */
     .candidate-name {
         font-size: 3.0rem;
         font-weight: 800;
@@ -70,12 +69,12 @@ st.markdown(
         background-color: #F0F9FF;
         color: #0369A1;
         border: 1px solid #BAE6FD;
-        padding: 5px 12px;
+        padding: 6px 14px;
         border-radius: 6px;
-        font-size: 0.85rem;
+        font-size: 0.9rem;
         font-weight: 600;
         display: inline-block;
-        margin: 3px 2px;
+        margin: 4px 3px;
     }
     
     /* Experience Headers */
@@ -308,10 +307,9 @@ with tab_exp:
 # TAB 2: SKILLS & TOOLS
 # ---------------------------------------------------------
 with tab_skills:
-    col_s1, col_s2 = st.columns(2)
-
-    with col_s1:
-        st.markdown("#### **Skill Categories & Toolset**")
+    with st.container(border=True):
+        st.markdown("#### **Technical Skill Matrix & Toolset**")
+        st.markdown("<br>", unsafe_allow_html=True)
 
         skills_dict = {
             "BI & Visualization": ["Tableau", "Power BI", "Tableau Prep"],
@@ -328,58 +326,27 @@ with tab_skills:
             "Continuous Learning / Projects": ["dbt", "Snowflake"],
         }
 
-        for category, items in skills_dict.items():
-            st.markdown(f"**{category}**")
-            badge_html = "".join(
-                [f'<span class="skill-badge">{item}</span>' for item in items]
-            )
-            st.markdown(badge_html, unsafe_allow_html=True)
-            st.markdown("<div style='margin-bottom: 10px;'></div>", unsafe_allow_html=True)
+        col1, col2 = st.columns(2)
+        items_list = list(skills_dict.items())
 
-    with col_s2:
-        st.markdown("#### **Technical Mastery Breakdown**")
+        # Distribute skill categories across two clean columns
+        with col1:
+            for category, items in items_list[:3]:
+                st.markdown(f"**{category}**")
+                badge_html = "".join(
+                    [f'<span class="skill-badge">{item}</span>' for item in items]
+                )
+                st.markdown(badge_html, unsafe_allow_html=True)
+                st.markdown("<div style='margin-bottom: 16px;'></div>", unsafe_allow_html=True)
 
-        skill_df = pd.DataFrame(
-            {
-                "Tool": [
-                    "SQL",
-                    "Tableau",
-                    "Python",
-                    "KNIME",
-                    "AWS (Athena/Glue)",
-                    "Alteryx",
-                    "Power BI",
-                ],
-                "Relative Depth (%)": [95, 90, 88, 85, 75, 80, 70],
-                "Domain": [
-                    "Database",
-                    "BI",
-                    "Code",
-                    "ETL",
-                    "Cloud",
-                    "ETL",
-                    "BI",
-                ],
-            }
-        )
-
-        slate_palette = ["#334155", "#0284C7", "#475569", "#0EA5E9", "#64748B"]
-
-        fig_skills = px.bar(
-            skill_df,
-            x="Relative Depth (%)",
-            y="Tool",
-            color="Domain",
-            orientation="h",
-            color_discrete_sequence=slate_palette,
-        )
-        fig_skills.update_layout(
-            height=340,
-            xaxis_title="Proficiency & Project Exposure (%)",
-            yaxis_title="",
-            margin=dict(l=0, r=0, t=10, b=10),
-        )
-        st.plotly_chart(fig_skills, use_container_width=True)
+        with col2:
+            for category, items in items_list[3:]:
+                st.markdown(f"**{category}**")
+                badge_html = "".join(
+                    [f'<span class="skill-badge">{item}</span>' for item in items]
+                )
+                st.markdown(badge_html, unsafe_allow_html=True)
+                st.markdown("<div style='margin-bottom: 16px;'></div>", unsafe_allow_html=True)
 
 # ---------------------------------------------------------
 # TAB 3: IMPACT & MIGRATION HIGHLIGHTS
