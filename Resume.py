@@ -507,9 +507,13 @@ st.markdown(
 
     /* Recruiter portfolio refresh */
     [data-testid="stMainBlockContainer"] {
-        max-width: 1240px !important;
+        width: 100% !important;
+        max-width: 1600px !important;
         padding-top: clamp(1.2rem, 4vw, 3rem) !important;
+        padding-right: clamp(1rem, 3vw, 3.5rem) !important;
         padding-bottom: 3rem !important;
+        padding-left: clamp(1rem, 3vw, 3.5rem) !important;
+        box-sizing: border-box !important;
     }
 
     .hero-card {
