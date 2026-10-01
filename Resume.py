@@ -562,8 +562,8 @@ st.markdown(
     }
 
     .header-avatar {
-        width: clamp(76px, 10vw, 104px) !important;
-        height: clamp(76px, 10vw, 104px) !important;
+        width: clamp(116px, 10vw, 140px) !important;
+        height: clamp(116px, 10vw, 140px) !important;
         border: 3px solid rgba(186, 230, 253, 0.85) !important;
         border-radius: 1.4rem !important;
         box-shadow: 0 8px 24px rgba(0, 0, 0, 0.26) !important;
@@ -901,6 +901,12 @@ st.markdown(
 
         .profile-group {
             gap: 0.9rem;
+            flex-wrap: wrap;
+        }
+
+        .header-avatar {
+            width: 80px !important;
+            height: 80px !important;
         }
 
         .hero-eyebrow {
