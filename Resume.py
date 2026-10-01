@@ -42,13 +42,7 @@ if not img_src:
 st.markdown(
     """
     <style>
-    :root {
-        color-scheme: light !important;
-    }
-
     .stApp {
-        background-color: #F8FAFC !important;
-        color: #0F172A !important;
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     }
 
@@ -307,6 +301,677 @@ st.markdown(
             font-size: 0.8rem;
         }
     }
+
+    /* Use Streamlit's active foreground/background so light and dark themes both work. */
+    .hero-card,
+    .val-card,
+    .metric-card,
+    .skill-card {
+        background: rgba(127, 127, 127, 0.07) !important;
+        color: inherit !important;
+        border: 1.5px solid rgba(127, 127, 127, 0.48) !important;
+        border-radius: 1rem !important;
+        box-shadow: 0 5px 18px rgba(0, 0, 0, 0.09) !important;
+    }
+
+    .hero-card {
+        background-image: none !important;
+        border-left: 4px solid currentColor !important;
+    }
+
+    .candidate-name,
+    .candidate-title,
+    .skill-title,
+    .exp-company,
+    .exp-date,
+    .contact-bar,
+    .metric-sub,
+    .metric-lbl,
+    .contact-bar a,
+    .val-card,
+    .skill-card {
+        color: inherit !important;
+    }
+
+    .status-badge,
+    .pillar-pill,
+    .chip,
+    .chip-primary {
+        color: inherit !important;
+        background: rgba(127, 127, 127, 0.08) !important;
+        border-color: rgba(127, 127, 127, 0.4) !important;
+    }
+
+    .stMarkdown div[style*="color: #0F172A"],
+    .stMarkdown div[style*="color: #334155"] {
+        color: inherit !important;
+    }
+
+    .metric-val[style] {
+        color: inherit !important;
+    }
+
+    [class*="st-key-card-"] {
+        box-sizing: border-box !important;
+        margin: 0.55rem 0 1rem !important;
+        padding: clamp(1rem, 2.5vw, 1.4rem) !important;
+        border: 2px solid currentColor !important;
+        border-radius: 1rem !important;
+        background: rgba(127, 127, 127, 0.12) !important;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12) !important;
+        color: inherit !important;
+        transition: transform 0.18s ease, box-shadow 0.18s ease;
+    }
+
+    [class*="st-key-card-"]:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 9px 24px rgba(0, 0, 0, 0.15) !important;
+    }
+
+    [class*="st-key-card-"] [data-testid="stMarkdownContainer"] {
+        color: inherit !important;
+    }
+
+    [class*="st-key-card-"] p:last-child,
+    [class*="st-key-card-"] ul:last-child {
+        margin-bottom: 0;
+    }
+
+    [data-testid="stTabs"] [role="tablist"] {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        gap: 0.4rem !important;
+        border-bottom: 1px solid rgba(127, 127, 127, 0.35) !important;
+    }
+
+    [data-testid="stTab"],
+    button[data-baseweb="tab"] {
+        flex: 1 1 10rem !important;
+        min-width: min(10rem, 100%) !important;
+        min-height: 2.8rem !important;
+        padding: 0.65rem 0.8rem !important;
+        border: 1px solid rgba(127, 127, 127, 0.35) !important;
+        border-bottom: 3px solid transparent !important;
+        border-radius: 0.65rem 0.65rem 0 0 !important;
+        background: rgba(127, 127, 127, 0.04) !important;
+        color: inherit !important;
+        white-space: normal !important;
+    }
+
+    [data-testid="stTab"] p,
+    button[data-baseweb="tab"] p {
+        color: inherit !important;
+        white-space: normal !important;
+        line-height: 1.25 !important;
+    }
+
+    [data-testid="stTab"][aria-selected="true"],
+    button[data-baseweb="tab"][aria-selected="true"] {
+        color: inherit !important;
+        border-bottom-color: currentColor !important;
+    }
+
+    [data-testid="stTab"]:focus-visible,
+    button[data-baseweb="tab"]:focus-visible,
+    .agentic-cta:focus-visible {
+        outline: 3px solid currentColor !important;
+        outline-offset: 2px !important;
+    }
+
+    .agentic-cta {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.75rem;
+        width: fit-content;
+        max-width: 100%;
+        padding: 0.85rem 1.1rem;
+        border: 2px solid currentColor;
+        border-radius: 0.75rem;
+        background: rgba(127, 127, 127, 0.08);
+        color: inherit !important;
+        font-weight: 750;
+        line-height: 1.3;
+        text-decoration: none !important;
+        box-shadow: 0 5px 14px rgba(0, 0, 0, 0.16);
+        transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .agentic-cta:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 18px rgba(0, 0, 0, 0.2);
+        filter: brightness(1.08);
+    }
+
+    .agentic-cta-arrow {
+        font-size: 1.15rem;
+        flex: 0 0 auto;
+    }
+
+    .table-container {
+        max-width: 100%;
+    }
+
+    @media (max-width: 640px) {
+        .hero-card,
+        .val-card,
+        .metric-card,
+        .skill-card {
+            padding: 1rem !important;
+        }
+
+        [class*="st-key-card-"] {
+            padding: 0.9rem !important;
+            margin: 0.45rem 0 0.85rem !important;
+        }
+
+        .profile-group {
+            align-items: flex-start;
+        }
+
+        .header-avatar {
+            width: 68px !important;
+            height: 68px !important;
+        }
+
+        .contact-item {
+            white-space: normal;
+            overflow-wrap: anywhere;
+        }
+
+        .metrics-grid,
+        .skills-grid {
+            grid-template-columns: minmax(0, 1fr) !important;
+        }
+
+        [data-testid="stTab"],
+        button[data-baseweb="tab"] {
+            flex-basis: calc(50% - 0.4rem) !important;
+            min-width: 0 !important;
+            font-size: 0.82rem !important;
+        }
+
+        .agentic-cta {
+            width: 100%;
+            box-sizing: border-box;
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after {
+            scroll-behavior: auto !important;
+            transition-duration: 0.01ms !important;
+            animation-duration: 0.01ms !important;
+        }
+    }
+
+    /* Recruiter portfolio refresh */
+    [data-testid="stMainBlockContainer"] {
+        max-width: 1240px !important;
+        padding-top: clamp(1.2rem, 4vw, 3rem) !important;
+        padding-bottom: 3rem !important;
+    }
+
+    .hero-card {
+        position: relative;
+        overflow: hidden;
+        padding: clamp(1.35rem, 4vw, 2.6rem) !important;
+        border: 1px solid rgba(148, 197, 255, 0.34) !important;
+        border-left: 1px solid rgba(148, 197, 255, 0.34) !important;
+        border-radius: 1.5rem !important;
+        background: radial-gradient(ellipse at 90% 0%, rgba(56, 189, 248, 0.2), transparent 38%), linear-gradient(130deg, #0B1730 0%, #123454 58%, #14506B 100%) !important;
+        color: #F8FAFC !important;
+        box-shadow: 0 18px 44px rgba(2, 12, 27, 0.24) !important;
+    }
+
+    .hero-card::after {
+        content: "DATA  /  INSIGHT  /  IMPACT";
+        position: absolute;
+        right: clamp(1rem, 3vw, 2rem);
+        bottom: 0.8rem;
+        color: rgba(226, 242, 255, 0.48);
+        font-size: 0.65rem;
+        font-weight: 800;
+        letter-spacing: 0.18em;
+        pointer-events: none;
+    }
+
+    .hero-wrapper {
+        position: relative;
+        z-index: 1;
+        align-items: center;
+        gap: 1.5rem;
+    }
+
+    .profile-group {
+        flex-wrap: nowrap;
+        gap: clamp(1rem, 2vw, 1.4rem);
+    }
+
+    .hero-eyebrow {
+        margin-bottom: 0.6rem;
+        color: #BAE6FD;
+        font-size: 0.7rem;
+        font-weight: 800;
+        letter-spacing: 0.17em;
+        text-transform: uppercase;
+    }
+
+    .header-avatar {
+        width: clamp(76px, 10vw, 104px) !important;
+        height: clamp(76px, 10vw, 104px) !important;
+        border: 3px solid rgba(186, 230, 253, 0.85) !important;
+        border-radius: 1.4rem !important;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.26) !important;
+    }
+
+    .candidate-name {
+        color: #FFFFFF !important;
+        font-size: clamp(2rem, 5vw, 3.25rem) !important;
+        line-height: 1.02 !important;
+        letter-spacing: -0.055em !important;
+    }
+
+    .candidate-title {
+        margin-top: 0.55rem !important;
+        color: #9BE3FF !important;
+        font-size: clamp(1rem, 2.5vw, 1.25rem) !important;
+        font-weight: 700 !important;
+        letter-spacing: 0.015em;
+    }
+
+    .status-badge {
+        margin-top: 0.8rem !important;
+        padding: 0.42rem 0.75rem !important;
+        border: 1px solid rgba(191, 219, 254, 0.3) !important;
+        border-radius: 99px !important;
+        background: rgba(255, 255, 255, 0.1) !important;
+        color: #E0F2FE !important;
+        font-size: 0.78rem !important;
+        line-height: 1.4;
+    }
+
+    .contact-bar {
+        max-width: 27rem;
+        justify-content: flex-end;
+        gap: 0.55rem !important;
+        color: #E2E8F0 !important;
+        font-size: 0.82rem !important;
+    }
+
+    .contact-item {
+        padding: 0.52rem 0.7rem;
+        border: 1px solid rgba(226, 242, 255, 0.23);
+        border-radius: 0.7rem;
+        background: rgba(255, 255, 255, 0.075);
+        backdrop-filter: blur(8px);
+    }
+
+    .contact-bar a {
+        color: #FFFFFF !important;
+    }
+
+    .contact-item:hover {
+        background: rgba(255, 255, 255, 0.15);
+    }
+
+    .val-card {
+        display: grid;
+        grid-template-columns: minmax(0, 1.7fr) minmax(13rem, 0.8fr);
+        align-items: center;
+        gap: 1rem 1.6rem;
+        margin-top: 1.25rem;
+        padding: clamp(1.2rem, 3vw, 1.8rem) !important;
+        border-radius: 1.15rem !important;
+    }
+
+    .val-card > div:first-child {
+        grid-column: 1 / -1;
+        margin: 0 !important;
+        font-size: 0.78rem !important;
+        letter-spacing: 0.13em;
+        text-transform: uppercase;
+        opacity: 0.75;
+    }
+
+    .val-card > div:nth-child(2) {
+        font-size: clamp(1rem, 1.5vw, 1.12rem) !important;
+        line-height: 1.75 !important;
+    }
+
+    .summary-kicker {
+        color: inherit;
+    }
+
+    .pillar-wrapper {
+        gap: 0.45rem !important;
+        margin-top: 0 !important;
+    }
+
+    .pillar-pill {
+        padding: 0.38rem 0.62rem !important;
+        border: 1px solid rgba(127, 127, 127, 0.35) !important;
+        border-radius: 99px !important;
+        background: rgba(127, 127, 127, 0.1) !important;
+        font-size: 0.75rem !important;
+    }
+
+    .metrics-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+        gap: 0.85rem !important;
+        margin: 0 0 1.5rem !important;
+    }
+
+    .metric-card {
+        min-height: 9.3rem;
+        padding: 1.15rem !important;
+        border: 1px solid rgba(127, 127, 127, 0.34) !important;
+        border-top: 3px solid currentColor !important;
+        border-radius: 1rem !important;
+        background: rgba(127, 127, 127, 0.055) !important;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.07) !important;
+    }
+
+    .metric-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.13) !important;
+    }
+
+    .metric-val {
+        font-size: clamp(1.8rem, 3vw, 2.35rem) !important;
+        letter-spacing: -0.045em;
+    }
+
+    .metric-lbl {
+        margin-top: 0.55rem !important;
+        font-size: 0.71rem !important;
+        letter-spacing: 0.08em !important;
+    }
+
+    .metric-sub {
+        margin-top: 0.4rem !important;
+        line-height: 1.45 !important;
+    }
+
+    [data-testid="stTabs"] [role="tablist"] {
+        gap: 0.55rem !important;
+        margin: 0.5rem 0 0.2rem;
+        padding: 0.35rem !important;
+        border: 1px solid rgba(127, 127, 127, 0.24) !important;
+        border-radius: 1rem !important;
+        background: rgba(127, 127, 127, 0.055);
+    }
+
+    [data-testid="stTab"],
+    button[data-baseweb="tab"] {
+        flex: 1 1 11rem !important;
+        min-height: 3rem !important;
+        padding: 0.7rem 1rem !important;
+        border: 1px solid transparent !important;
+        border-radius: 0.75rem !important;
+        background: transparent !important;
+        font-size: 0.9rem !important;
+        font-weight: 700 !important;
+        text-align: center;
+    }
+
+    [data-testid="stTab"][aria-selected="true"],
+    button[data-baseweb="tab"][aria-selected="true"] {
+        border-color: rgba(127, 127, 127, 0.3) !important;
+        background: rgba(127, 127, 127, 0.14) !important;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+
+    [data-testid="stTab"] p,
+    button[data-baseweb="tab"] p {
+        margin: 0 !important;
+        font-weight: 700 !important;
+    }
+
+    [data-testid="stTabPanel"] {
+        padding-top: 1.3rem !important;
+    }
+
+    [class*="st-key-card-"] {
+        margin: 0.65rem 0 1.05rem !important;
+        padding: clamp(1.1rem, 2.6vw, 1.65rem) !important;
+        border: 2px solid currentColor !important;
+        border-left: 4px solid currentColor !important;
+        border-radius: 1.15rem !important;
+        background: rgba(127, 127, 127, 0.1) !important;
+        box-shadow: 0 7px 22px rgba(0, 0, 0, 0.075) !important;
+    }
+
+    .exp-header {
+        align-items: center;
+        padding-bottom: 0.9rem;
+        margin-bottom: 0.8rem !important;
+        border-bottom: 1px solid rgba(127, 127, 127, 0.28);
+    }
+
+    .exp-company {
+        font-size: clamp(1.12rem, 2.5vw, 1.35rem) !important;
+        letter-spacing: -0.02em;
+    }
+
+    .exp-date {
+        padding: 0.34rem 0.65rem;
+        border: 1px solid rgba(127, 127, 127, 0.35);
+        border-radius: 99px;
+        background: rgba(127, 127, 127, 0.09);
+        font-size: 0.78rem !important;
+    }
+
+    [data-testid="stMarkdownContainer"] ul {
+        padding-left: 1.2rem;
+    }
+
+    [data-testid="stMarkdownContainer"] li {
+        padding-left: 0.15rem;
+        margin: 0.35rem 0;
+        line-height: 1.6;
+    }
+
+    .skills-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+        gap: 0.9rem !important;
+    }
+
+    .skill-card {
+        min-height: 8rem;
+        padding: 1.2rem !important;
+        border-radius: 1rem !important;
+        background: rgba(127, 127, 127, 0.055) !important;
+    }
+
+    .skill-title {
+        margin-bottom: 0.85rem !important;
+        font-size: 0.95rem !important;
+    }
+
+    .chip {
+        padding: 0.35rem 0.6rem !important;
+        border-radius: 99px !important;
+        font-size: 0.76rem !important;
+    }
+
+    .agentic-cta {
+        justify-content: center;
+        width: fit-content;
+        max-width: 100%;
+        border: 1px solid #0EA5E9 !important;
+        border-radius: 0.8rem !important;
+        background: linear-gradient(110deg, #0369A1, #0284C7) !important;
+        color: #FFFFFF !important;
+        box-shadow: 0 8px 18px rgba(2, 132, 199, 0.25) !important;
+        text-align: center;
+    }
+
+    .project-kicker {
+        color: #0284C7;
+        font-size: 0.7rem;
+        font-weight: 800;
+        letter-spacing: 0.14em;
+    }
+
+    .project-title {
+        margin: 0.35rem 0 0.45rem !important;
+        font-size: clamp(1.35rem, 3vw, 1.8rem) !important;
+        letter-spacing: -0.04em;
+    }
+
+    .project-summary {
+        max-width: 70ch;
+        margin: 0 0 1rem !important;
+        line-height: 1.65;
+    }
+
+    .project-actions {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.75rem 1rem;
+        margin: 0.8rem 0 1.1rem;
+    }
+
+    .project-secondary-link {
+        padding: 0.75rem 0.2rem;
+        color: inherit !important;
+        font-weight: 700;
+        text-decoration-thickness: 1px !important;
+        text-underline-offset: 0.2em;
+    }
+
+    .project-highlights {
+        margin-top: 0.8rem !important;
+    }
+
+    .project-tech {
+        display: inline-block;
+        margin-top: 0.45rem;
+        padding: 0.5rem 0.75rem;
+        border: 1px solid rgba(127, 127, 127, 0.3);
+        border-radius: 0.7rem;
+        background: rgba(127, 127, 127, 0.07);
+        font-size: 0.84rem;
+    }
+
+    .table-container [data-testid="stDataFrame"] {
+        overflow: hidden;
+        border: 1px solid rgba(127, 127, 127, 0.35);
+        border-radius: 1rem;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.07);
+    }
+
+    @media (max-width: 900px) {
+        .hero-wrapper {
+            align-items: flex-start;
+        }
+
+        .contact-bar {
+            justify-content: flex-start;
+        }
+
+        .metrics-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        }
+
+        .skills-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        }
+    }
+
+    @media (max-width: 640px) {
+        [data-testid="stMainBlockContainer"] {
+            padding: 0.8rem 0.75rem 2rem !important;
+        }
+
+        .hero-card {
+            border-radius: 1.15rem !important;
+            padding: 1.1rem !important;
+        }
+
+        .hero-card::after {
+            display: none;
+        }
+
+        .profile-group {
+            gap: 0.9rem;
+        }
+
+        .hero-eyebrow {
+            font-size: 0.6rem;
+        }
+
+        .candidate-name {
+            font-size: clamp(1.7rem, 8vw, 2.2rem) !important;
+        }
+
+        .status-badge {
+            font-size: 0.7rem !important;
+        }
+
+        .contact-bar {
+            gap: 0.45rem !important;
+            font-size: 0.75rem !important;
+        }
+
+        .contact-item {
+            white-space: normal;
+            overflow-wrap: anywhere;
+        }
+
+        .val-card {
+            grid-template-columns: 1fr;
+            gap: 0.8rem;
+            padding: 1.1rem !important;
+        }
+
+        .val-card > div:first-child {
+            grid-column: auto;
+        }
+
+        .metrics-grid,
+        .skills-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+            gap: 0.6rem !important;
+        }
+
+        .metric-card {
+            min-height: 8.7rem;
+            padding: 0.9rem !important;
+        }
+
+        .metric-val {
+            font-size: 1.75rem !important;
+        }
+
+        .metric-lbl {
+            font-size: 0.64rem !important;
+        }
+
+        [data-testid="stTab"] {
+            flex-basis: calc(50% - 0.4rem) !important;
+            min-width: 0 !important;
+            padding: 0.6rem 0.35rem !important;
+            font-size: 0.76rem !important;
+        }
+
+        [class*="st-key-card-"] {
+            padding: 0.95rem !important;
+        }
+
+        .agentic-cta {
+            width: 100%;
+            box-sizing: border-box;
+            font-size: 0.9rem;
+        }
+
+        .project-secondary-link {
+            width: 100%;
+            text-align: center;
+        }
+    }
     </style>
 """,
     unsafe_allow_html=True,
@@ -320,11 +985,12 @@ st.markdown(
     <div class="hero-card">
         <div class="hero-wrapper">
             <div class="profile-group">
-                <img class="header-avatar" src="{img_src}">
-                <div>
+                <img class="header-avatar" src="{img_src}" alt="Pavan Deep Godi">
+                <div class="hero-copy">
+                    <div class="hero-eyebrow">Analytics Engineering &nbsp;·&nbsp; BI &nbsp;·&nbsp; Automation</div>
                     <div class="candidate-name">PAVAN DEEP GODI</div>
                     <div class="candidate-title">Analytics & Insights Engineer</div>
-                    <div class="status-badge">🟢 7+ Years Experience &nbsp;•&nbsp; Converting Complex Data into Actionable Insights</div>
+                    <div class="status-badge">7+ years turning complex data into business decisions</div>
                 </div>
             </div>
             <div class="contact-bar">
@@ -345,18 +1011,15 @@ st.markdown(
 st.markdown(
     """
     <div class="val-card">
-        <div style="font-size: 1.05rem; font-weight: 800; color: #0F172A; margin-bottom: 6px;">
-            📝 Summary
-        </div>
-        <div style="font-size: 0.92rem; color: #334155; line-height: 1.6;">
-            <b>Analytics & Insights Engineer</b> with 7+ years of experience converting complex data into actionable insights for sales and finance leaders. Enhances SQL, Python, and KNIME data pipelines, Tableau dashboards, and KPI frameworks to improve data quality, accelerate reporting, and reduce ad-hoc requests. Delivers measurable, double-digit efficiency gains by transforming manual and Alteryx-based processes into scalable, automated analytics solutions.
-        </div>
+        <div class="summary-kicker">Profile</div>
+        <div class="summary-copy"><strong>Analytics & Insights Engineer</strong> with 7+ years of experience turning complex data into reliable analytics for sales and finance teams. Builds SQL, Python, and KNIME pipelines, validates data quality, and delivers Tableau dashboards and KPI datasets. Automates manual and Alteryx-based processes to reduce reporting turnaround and ad-hoc workload. Independently exploring agentic AI through a procurement analytics learning project.</div>
         <div class="pillar-wrapper">
-            <span class="pillar-pill">⚡ SQL, Python & KNIME Pipelines</span>
-            <span class="pillar-pill">📊 Tableau & Power BI</span>
-            <span class="pillar-pill">🎯 Scalable ETL & Automation</span>
-            <span class="pillar-pill">📈 KPI Frameworks</span>
-            <span class="pillar-pill">💼 Sales & Finance Analytics</span>
+            <span class="pillar-pill">SQL · Python · KNIME</span>
+            <span class="pillar-pill">Tableau · Power BI</span>
+            <span class="pillar-pill">ETL & Automation</span>
+            <span class="pillar-pill">KPI Frameworks</span>
+            <span class="pillar-pill">Sales & Finance Analytics</span>
+            <span class="pillar-pill">Agentic AI · Learning Project</span>
         </div>
     </div>
 """,
@@ -366,10 +1029,7 @@ st.markdown(
 # ---------------------------------------------------------
 # 5. High-Impact Highlights
 # ---------------------------------------------------------
-st.markdown(
-    "<div style='font-size: 1.05rem; font-weight: 800; color: #0F172A; margin-bottom: 10px;'>📈 Key Accomplishments & Metrics</div>",
-    unsafe_allow_html=True,
-)
+st.markdown("#### 📈 Selected impact", unsafe_allow_html=True)
 
 st.markdown(
     """
@@ -413,11 +1073,11 @@ tab_exp, tab_skills, tab_matrix, tab_projects_edu = st.tabs(
 
 # TAB 1: PROFESSIONAL EXPERIENCE
 with tab_exp:
-    with st.container(border=True):
+    with st.container(border=True, key="card-experience-deloitte"):
         st.markdown(
             """
             <div class="exp-header">
-                <div class="exp-company">Analytics & Engineer 2 &nbsp;|&nbsp; DELOITTE</div>
+                <div class="exp-company">Analytics & Insights Engineer &nbsp;|&nbsp; DELOITTE</div>
                 <div class="exp-date">Jun 2024 – Present</div>
             </div>
             """,
@@ -436,7 +1096,7 @@ with tab_exp:
         """
         )
 
-    with st.container(border=True):
+    with st.container(border=True, key="card-experience-solenis"):
         st.markdown(
             """
             <div class="exp-header">
@@ -448,7 +1108,6 @@ with tab_exp:
         )
         st.markdown(
             """
-        * Designed and streamlined a working capital dashboard to monitor cash flow, providing enhanced visibility into financial metrics for finance leadership, increasing usage by **30%**.
         * Built a working capital cash-flow dashboard and refined KPI definitions based on stakeholder feedback, increasing adoption/usage by **30%**.
         * Developed an executive KPI dashboard for weekly performance reviews, improving visibility into core operational metrics and trends.
         * Produced monthly executive performance decks using standardized SQL extracts, translating operational data trends into actions and targets for leadership.
@@ -459,7 +1118,7 @@ with tab_exp:
         """
         )
 
-    with st.container(border=True):
+    with st.container(border=True, key="card-experience-tcs"):
         st.markdown(
             """
             <div class="exp-header">
@@ -524,6 +1183,8 @@ with tab_skills:
                 <div class="chips-wrapper">
                     <span class="chip">dbt</span>
                     <span class="chip">Snowflake</span>
+                    <span class="chip">Agentic AI</span>
+                    <span class="chip">Claude</span>
                 </div>
             </div>
         </div>
@@ -578,7 +1239,7 @@ with tab_matrix:
     st.markdown('<div class="table-container">', unsafe_allow_html=True)
     st.dataframe(
         impact_df,
-        use_container_width=True,
+        width="stretch",
         hide_index=True,
     )
     st.markdown("</div>", unsafe_allow_html=True)
@@ -586,30 +1247,54 @@ with tab_matrix:
 # TAB 4: ACHIEVEMENTS, PROJECTS & EDUCATION
 with tab_projects_edu:
     st.markdown("#### 🏆 Professional Achievements")
-    st.markdown(
-        """
+    with st.container(border=True, key="card-achievements"):
+        st.markdown(
+            """
     * **Applause Award — Deloitte:** Recognized for contributions to the Cash Plus Pilot and Sales Executive Insights Dashboard.
     * **Employee Award — Solenis:** Honored for co-developing a raw-material procurement dashboard that identified savings opportunities and contributed to more than $500,000 in cost savings.
     * **Client Recognition — Solenis:** Received multiple commendations for delivering timely reports, actionable KPIs, and data-driven solutions that supported leadership discussions and decision-making.
-    """
-    )
+            """
+        )
 
     st.markdown("---")
     st.markdown("#### 🚀 Personal Projects")
-    with st.container(border=True):
+    with st.container(border=True, key="card-project-purchase-intelligence"):
         st.markdown(
             """
-        **IPL Auction Analytics – IPL**
-        * **App Link:** [IPL_Analytics_App](#)
-        * **GitHub Link:** [Github_IPL_Analytics](https://github.com/pavandeep-godi)
-        * **Description:** This tool aids decision-making by analyzing various unique parameters that teams consider when building their squads during auctions.
-        * **Tools used:** Python (Streamlit)
-        """
+        <div class="project-kicker">PERSONAL LEARNING PROJECT &nbsp;·&nbsp; MOCK DATA</div>
+        <h3 class="project-title">Purchase Intelligence</h3>
+        <p class="project-summary">An independent prototype exploring agentic-AI patterns for procurement analytics. It is a learning project—not professional, employer, or client work.</p>
+        <div class="project-actions">
+            <a class="agentic-cta" href="https://purchaseintelligence.streamlit.app/" target="_blank" rel="noopener noreferrer">🚀 Explore the live demo <span aria-hidden="true">↗</span></a>
+            <a class="project-secondary-link" href="https://github.com/pavandeep-godi/Purchase-Intelligence" target="_blank" rel="noopener noreferrer">View source on GitHub ↗</a>
+        </div>
+        <ul class="project-highlights">
+            <li>Specialized agents validate mock purchase records and calculate quarterly spend and potential savings.</li>
+            <li>Python owns the calculations; Groq cross-checks totals and flags unusual patterns without changing source records or results.</li>
+        </ul>
+        <div class="project-tech"><strong>Built with</strong> &nbsp; Python · Streamlit · pandas · Plotly · CSV · Groq</div>
+        """,
+            unsafe_allow_html=True,
+        )
+
+    with st.container(border=True, key="card-project-ipl-analytics"):
+        st.markdown(
+            """
+        <div class="project-kicker">PERSONAL PROJECT &nbsp;·&nbsp; SPORTS ANALYTICS</div>
+        <h3 class="project-title">IPL Auction Analytics</h3>
+        <p class="project-summary">An interactive decision-support tool that analyzes player and squad-building parameters to help compare auction choices.</p>
+        <div class="project-actions">
+            <a class="agentic-cta" href="https://iplanalytics-gpd718.streamlit.app/" target="_blank" rel="noopener noreferrer">🏏 Explore the dashboard <span aria-hidden="true">↗</span></a>
+            <a class="project-secondary-link" href="https://github.com/pavandeep-godi/IPL_Analytics" target="_blank" rel="noopener noreferrer">View source on GitHub ↗</a>
+        </div>
+        <div class="project-tech"><strong>Built with</strong> &nbsp; Python · Streamlit</div>
+        """,
+            unsafe_allow_html=True,
         )
 
     st.markdown("---")
     st.markdown("#### 🎓 Education")
-    with st.container(border=True):
+    with st.container(border=True, key="card-education"):
         st.markdown(
             """
         **Bachelor of Technology in Engineering** | Gitam University (2015 – 2019)
