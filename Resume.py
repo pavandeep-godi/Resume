@@ -1357,7 +1357,7 @@ with tab_projects_edu:
         st.markdown(
             """
         <div class="project-kicker">PERSONAL PROJECT &nbsp;·&nbsp; AI-ASSISTED ANALYTICS</div>
-        <h3 class="project-title">Data Analyst AI Agent</h3>
+        <h3 class="project-title">Text to SQL Analytics AI Agent</h3>
         <p class="project-summary">A lightweight, beginner-accessible proof of concept that turns business questions into data analysis using synthetic sales and procurement datasets.</p>
         <div class="project-actions">
             <a class="agentic-cta" href="https://text-to-sql-analyst.streamlit.app/" target="_blank" rel="noopener noreferrer">🤖 Try the live AI agent <span aria-hidden="true">↗</span></a>
