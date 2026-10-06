@@ -1324,9 +1324,9 @@ with tab_projects_edu:
             """
         <div class="project-kicker">PERSONAL LEARNING PROJECT &nbsp;·&nbsp; MOCK DATA</div>
         <h3 class="project-title">Purchase Intelligence</h3>
-        <p class="project-summary"><strong>Project:</strong> An independent learning project exploring agentic AI for procurement analytics with mock purchase data.</p>
-        <p class="project-summary"><strong>What it does:</strong> It validates purchase records, calculates quarterly spend and potential savings, and uses Groq AI to cross-check totals and flag unusual patterns without changing the source data or calculated results.</p>
-        <p class="project-summary"><strong>Tech used:</strong> Python, Streamlit, pandas, Plotly, CSV data, and Groq AI.</p>
+        <p class="project-summary"><strong>Project:</strong> An independent learning project exploring how AI can safely assist procurement analytics, using mock purchase data. It is not real company data and not a purchasing system.</p>
+        <p class="project-summary"><strong>What it does:</strong> It validates purchase and supplier-quote records, calculates quarterly spend and indicative savings, and explains what moved spend. An “Ask the analyst” tab answers plain-English questions by running a fixed set of approved analyses. Groq AI can choose which analysis to run and write a short summary; it never calculates, changes data, or places orders. Every number comes from Python, AI-produced figures are cross-checked against it, and the app falls back to plain answers if AI is unavailable.</p>
+        <p class="project-summary"><strong>Tech used:</strong> Python, Streamlit, pandas, Plotly, CSV data, Groq AI (free tier, with a token-budget guard), and automated tests with an 18-question evaluation set.</p>
         <div class="project-actions">
             <a class="agentic-cta" href="https://purchaseintelligence.streamlit.app/" target="_blank" rel="noopener noreferrer">🚀 Explore the live demo <span aria-hidden="true">↗</span></a>
             <a class="project-secondary-link" href="https://github.com/pavandeep-godi/Purchase-Intelligence" target="_blank" rel="noopener noreferrer">View source on GitHub ↗</a>
