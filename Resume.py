@@ -1324,16 +1324,13 @@ with tab_projects_edu:
             """
         <div class="project-kicker">PERSONAL LEARNING PROJECT &nbsp;·&nbsp; MOCK DATA</div>
         <h3 class="project-title">Purchase Intelligence</h3>
-        <p class="project-summary">An independent prototype exploring agentic-AI patterns for procurement analytics. It is a learning project—not professional, employer, or client work.</p>
+        <p class="project-summary"><strong>Project:</strong> An independent learning project exploring agentic AI for procurement analytics with mock purchase data.</p>
+        <p class="project-summary"><strong>What it does:</strong> It validates purchase records, calculates quarterly spend and potential savings, and uses Groq AI to cross-check totals and flag unusual patterns without changing the source data or calculated results.</p>
+        <p class="project-summary"><strong>Tech used:</strong> Python, Streamlit, pandas, Plotly, CSV data, and Groq AI.</p>
         <div class="project-actions">
             <a class="agentic-cta" href="https://purchaseintelligence.streamlit.app/" target="_blank" rel="noopener noreferrer">🚀 Explore the live demo <span aria-hidden="true">↗</span></a>
             <a class="project-secondary-link" href="https://github.com/pavandeep-godi/Purchase-Intelligence" target="_blank" rel="noopener noreferrer">View source on GitHub ↗</a>
         </div>
-        <ul class="project-highlights">
-            <li>Specialized agents validate mock purchase records and calculate quarterly spend and potential savings.</li>
-            <li>Python owns the calculations; Groq cross-checks totals and flags unusual patterns without changing source records or results.</li>
-        </ul>
-        <div class="project-tech"><strong>Built with</strong> &nbsp; Python · Streamlit · pandas · Plotly · CSV · Groq</div>
         """,
             unsafe_allow_html=True,
         )
@@ -1343,12 +1340,13 @@ with tab_projects_edu:
             """
         <div class="project-kicker">PERSONAL PROJECT &nbsp;·&nbsp; SPORTS ANALYTICS</div>
         <h3 class="project-title">IPL Auction Analytics</h3>
-        <p class="project-summary">An interactive decision-support tool that analyzes player and squad-building parameters to help compare auction choices.</p>
+        <p class="project-summary"><strong>Project:</strong> An interactive decision-support tool for IPL auction analysis.</p>
+        <p class="project-summary"><strong>What it does:</strong> It analyzes player and squad-building parameters to help compare potential auction choices.</p>
+        <p class="project-summary"><strong>Tech used:</strong> Python and Streamlit.</p>
         <div class="project-actions">
             <a class="agentic-cta" href="https://iplanalytics-gpd718.streamlit.app/" target="_blank" rel="noopener noreferrer">🏏 Explore the dashboard <span aria-hidden="true">↗</span></a>
             <a class="project-secondary-link" href="https://github.com/pavandeep-godi/IPL_Analytics" target="_blank" rel="noopener noreferrer">View source on GitHub ↗</a>
         </div>
-        <div class="project-tech"><strong>Built with</strong> &nbsp; Python · Streamlit</div>
         """,
             unsafe_allow_html=True,
         )
@@ -1356,18 +1354,15 @@ with tab_projects_edu:
     with st.container(border=True, key="card-project-data-analyst-ai-agent"):
         st.markdown(
             """
-        <div class="project-kicker">PERSONAL PROJECT &nbsp;·&nbsp; AI-ASSISTED ANALYTICS</div>
+        <div class="project-kicker">FREE-TIER BUILD &nbsp;·&nbsp; NATURAL-LANGUAGE ANALYTICS</div>
         <h3 class="project-title">Text to SQL Analytics AI Agent</h3>
-        <p class="project-summary">A lightweight, beginner-accessible proof of concept that turns business questions into data analysis using synthetic sales and procurement datasets.</p>
+        <p class="project-summary"><strong>Project:</strong> A cost-conscious Text-to-SQL analytics proof of concept built with free-tier resources.</p>
+        <p class="project-summary"><strong>What it does:</strong> It turns plain-English questions about synthetic sales and procurement data into SQL-backed results with a chart, concise summary, and results table.</p>
+        <p class="project-summary"><strong>Tech used:</strong> Python, Streamlit, DuckDB, SQL, and the Groq AI API with free-tier access.</p>
         <div class="project-actions">
             <a class="agentic-cta" href="https://text-to-sql-analyst.streamlit.app/" target="_blank" rel="noopener noreferrer">🤖 Try the live AI agent <span aria-hidden="true">↗</span></a>
             <a class="project-secondary-link" href="https://github.com/pavandeep-godi/Text_To_SQL_Analyst" target="_blank" rel="noopener noreferrer">View source on GitHub ↗</a>
         </div>
-        <ul class="project-highlights">
-            <li>Translate business inquiries into analysis across synthetic sales and procurement data.</li>
-            <li>For each query, present a visual chart, concise summary, results table, and the underlying SQL.</li>
-        </ul>
-        <div class="project-tech"><strong>Built with</strong> &nbsp; Python · Streamlit · DuckDB · SQL · Groq AI (API key)</div>
         """,
             unsafe_allow_html=True,
         )
