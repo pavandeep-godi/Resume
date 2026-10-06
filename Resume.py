@@ -1335,22 +1335,6 @@ with tab_projects_edu:
             unsafe_allow_html=True,
         )
 
-    with st.container(border=True, key="card-project-ipl-analytics"):
-        st.markdown(
-            """
-        <div class="project-kicker">PERSONAL PROJECT &nbsp;·&nbsp; SPORTS ANALYTICS</div>
-        <h3 class="project-title">IPL Auction Analytics</h3>
-        <p class="project-summary"><strong>Project:</strong> An interactive decision-support tool for IPL auction analysis.</p>
-        <p class="project-summary"><strong>What it does:</strong> It analyzes player and squad-building parameters to help compare potential auction choices.</p>
-        <p class="project-summary"><strong>Tech used:</strong> Python and Streamlit.</p>
-        <div class="project-actions">
-            <a class="agentic-cta" href="https://iplanalytics-gpd718.streamlit.app/" target="_blank" rel="noopener noreferrer">🏏 Explore the dashboard <span aria-hidden="true">↗</span></a>
-            <a class="project-secondary-link" href="https://github.com/pavandeep-godi/IPL_Analytics" target="_blank" rel="noopener noreferrer">View source on GitHub ↗</a>
-        </div>
-        """,
-            unsafe_allow_html=True,
-        )
-
     with st.container(border=True, key="card-project-data-analyst-ai-agent"):
         st.markdown(
             """
@@ -1362,6 +1346,22 @@ with tab_projects_edu:
         <div class="project-actions">
             <a class="agentic-cta" href="https://text-to-sql-analyst.streamlit.app/" target="_blank" rel="noopener noreferrer">🤖 Try the live AI agent <span aria-hidden="true">↗</span></a>
             <a class="project-secondary-link" href="https://github.com/pavandeep-godi/Text_To_SQL_Analyst" target="_blank" rel="noopener noreferrer">View source on GitHub ↗</a>
+        </div>
+        """,
+            unsafe_allow_html=True,
+        )
+
+    with st.container(border=True, key="card-project-ipl-analytics"):
+        st.markdown(
+            """
+        <div class="project-kicker">PERSONAL PROJECT &nbsp;·&nbsp; SPORTS ANALYTICS</div>
+        <h3 class="project-title">IPL Auction Analytics</h3>
+        <p class="project-summary"><strong>Project:</strong> An interactive decision-support tool for IPL auction analysis.</p>
+        <p class="project-summary"><strong>What it does:</strong> It analyzes player and squad-building parameters to help compare potential auction choices.</p>
+        <p class="project-summary"><strong>Tech used:</strong> Python and Streamlit.</p>
+        <div class="project-actions">
+            <a class="agentic-cta" href="https://iplanalytics-gpd718.streamlit.app/" target="_blank" rel="noopener noreferrer">🏏 Explore the dashboard <span aria-hidden="true">↗</span></a>
+            <a class="project-secondary-link" href="https://github.com/pavandeep-godi/IPL_Analytics" target="_blank" rel="noopener noreferrer">View source on GitHub ↗</a>
         </div>
         """,
             unsafe_allow_html=True,
