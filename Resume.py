@@ -31,7 +31,8 @@ def get_base64_image(image_path):
         return f"data:{mime_type};base64,{encoded}"
 
 
-img_src = get_base64_image(IMAGE_FILENAME)
+IMAGE_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), IMAGE_FILENAME)
+img_src = get_base64_image(IMAGE_PATH)
 
 if not img_src:
     img_src = "https://api.dicebear.com/7.x/initials/svg?seed=PDG&backgroundColor=0284c7"
@@ -519,6 +520,7 @@ st.markdown(
     .hero-card {
         position: relative;
         overflow: hidden;
+        container-type: inline-size;
         padding: clamp(1.35rem, 4vw, 2.6rem) !important;
         border: 1px solid rgba(148, 197, 255, 0.34) !important;
         border-left: 1px solid rgba(148, 197, 255, 0.34) !important;
@@ -869,11 +871,23 @@ st.markdown(
 
     @media (max-width: 900px) {
         .hero-wrapper {
-            align-items: flex-start;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .profile-group {
+            justify-content: center;
+        }
+
+        .hero-copy {
+            text-align: center;
         }
 
         .contact-bar {
-            justify-content: flex-start;
+            max-width: none;
+            width: 100%;
+            justify-content: center;
         }
 
         .metrics-grid {
@@ -882,6 +896,43 @@ st.markdown(
 
         .skills-grid {
             grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        }
+    }
+
+    @container (max-width: 950px) {
+        .hero-wrapper {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(15rem, 17rem);
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .profile-group {
+            min-width: 0;
+            justify-content: flex-start;
+        }
+
+        .hero-copy {
+            min-width: 0;
+            text-align: left;
+        }
+
+        .contact-bar {
+            max-width: none;
+            width: 100%;
+            justify-content: flex-end;
+        }
+    }
+
+    @container (max-width: 700px) {
+        .hero-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+        }
+
+        .contact-bar {
+            justify-content: flex-start;
         }
     }
 
@@ -1298,6 +1349,25 @@ with tab_projects_edu:
             <a class="project-secondary-link" href="https://github.com/pavandeep-godi/IPL_Analytics" target="_blank" rel="noopener noreferrer">View source on GitHub ↗</a>
         </div>
         <div class="project-tech"><strong>Built with</strong> &nbsp; Python · Streamlit</div>
+        """,
+            unsafe_allow_html=True,
+        )
+
+    with st.container(border=True, key="card-project-data-analyst-ai-agent"):
+        st.markdown(
+            """
+        <div class="project-kicker">PERSONAL PROJECT &nbsp;·&nbsp; AI-ASSISTED ANALYTICS</div>
+        <h3 class="project-title">Data Analyst AI Agent</h3>
+        <p class="project-summary">A lightweight, beginner-accessible proof of concept that turns business questions into data analysis using synthetic sales and procurement datasets.</p>
+        <div class="project-actions">
+            <a class="agentic-cta" href="https://text-to-sql-analyst.streamlit.app/" target="_blank" rel="noopener noreferrer">🤖 Try the live AI agent <span aria-hidden="true">↗</span></a>
+            <a class="project-secondary-link" href="https://github.com/pavandeep-godi/Text_To_SQL_Analyst" target="_blank" rel="noopener noreferrer">View source on GitHub ↗</a>
+        </div>
+        <ul class="project-highlights">
+            <li>Translate business inquiries into analysis across synthetic sales and procurement data.</li>
+            <li>For each query, present a visual chart, concise summary, results table, and the underlying SQL.</li>
+        </ul>
+        <div class="project-tech"><strong>Built with</strong> &nbsp; Python · Streamlit · DuckDB · SQL · Groq AI (API key)</div>
         """,
             unsafe_allow_html=True,
         )
